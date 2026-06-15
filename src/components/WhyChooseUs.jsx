@@ -53,39 +53,41 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-28 bg-[#f8f9fb]">
+    <section className="py-32 bg-[#172338] relative overflow-hidden">
+      {/* Ambient glow top-right */}
+      <div className="absolute top-0 right-0 w-[400px] h-[350px] rounded-full bg-[#4a3a6e]/8 blur-[120px] pointer-events-none" />
       <div className="max-w-[1240px] mx-auto px-6">
         {/* Header */}
         <AnimatedSection className="mb-20">
-          <span className="inline-flex items-center gap-2 text-[#C7A46C] text-xs font-semibold tracking-[0.18em] uppercase mb-4">
-            <span className="w-6 h-px bg-[#C7A46C]" />
+          <span className="inline-flex items-center gap-2 text-[#C8A46A] text-xs font-semibold tracking-[0.18em] uppercase mb-4">
+            <span className="w-6 h-px bg-[#C8A46A]" />
             Our Difference
           </span>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <h2 className="font-playfair text-4xl lg:text-5xl text-[#0F2747] max-w-lg leading-tight">
+            <h2 className="font-playfair text-4xl lg:text-5xl text-[#F5F1EA] max-w-lg leading-tight">
               Why Choose Ginny &amp; Co.
             </h2>
-            <p className="text-gray-400 text-base max-w-sm leading-relaxed">
+            <p className="text-[#A7B0C0] text-base max-w-sm leading-relaxed">
               What sets us apart is not just what we do, but how we do it.
             </p>
           </div>
-          <div className="w-12 h-px bg-[#C7A46C] mt-6" />
+          <div className="w-12 h-px bg-[#C8A46A] mt-6" />
         </AnimatedSection>
 
         {/* Feature cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 rounded-sm overflow-hidden">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((feature, i) => (
             <AnimatedSection key={feature.title} delay={0.07 * i}>
-              <div className="group bg-white p-8 hover:bg-[#0F2747] transition-colors duration-300 cursor-default h-full">
+              <div className="group bg-[#121B2A] rounded-[var(--radius-2xl)] p-8 hover:border-[#C8A46A]/20 hover:-translate-y-1 transition-all duration-300 cursor-default h-full border border-white/7">
                 <div className="flex items-start gap-5">
-                  <div className="w-10 h-10 shrink-0 rounded-sm bg-[#0F2747]/5 flex items-center justify-center group-hover:bg-[#C7A46C]/15 transition-colors duration-300">
-                    <feature.icon size={18} className="text-[#0F2747] group-hover:text-[#C7A46C] transition-colors duration-300" />
+                  <div className="w-11 h-11 shrink-0 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-[#C8A46A]/15 transition-colors duration-300">
+                    <feature.icon size={18} className="text-[#A7B0C0] group-hover:text-[#C8A46A] transition-colors duration-300" />
                   </div>
                   <div>
-                    <h3 className="text-[#0F2747] group-hover:text-white font-semibold text-base mb-2 transition-colors duration-300">
+                    <h3 className="text-[#F5F1EA] font-semibold text-base mb-2 transition-colors duration-300">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-400 group-hover:text-white/50 text-sm leading-relaxed transition-colors duration-300">
+                    <p className="text-[#A7B0C0] text-sm leading-relaxed transition-colors duration-300">
                       {feature.desc}
                     </p>
                   </div>

@@ -53,43 +53,43 @@ const clients = [
 
 export default function WhoWeServe() {
   return (
-    <section id="who-we-serve" className="py-28 bg-white">
+    <section id="who-we-serve" className="py-32 bg-[#121B2A]">
       <div className="max-w-[1240px] mx-auto px-6">
         {/* Header */}
         <AnimatedSection className="mb-20">
-          <span className="inline-flex items-center gap-2 text-[#C7A46C] text-xs font-semibold tracking-[0.18em] uppercase mb-4">
-            <span className="w-6 h-px bg-[#C7A46C]" />
+          <span className="inline-flex items-center gap-2 text-[#C8A46A] text-xs font-semibold tracking-[0.18em] uppercase mb-4">
+            <span className="w-6 h-px bg-[#C8A46A]" />
             Our Clients
           </span>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <h2 className="font-playfair text-4xl lg:text-5xl text-[#0F2747] max-w-md leading-tight">
+            <h2 className="font-playfair text-4xl lg:text-5xl text-[#F5F1EA] max-w-md leading-tight">
               Who We Serve
             </h2>
-            <p className="text-gray-400 text-base max-w-sm leading-relaxed">
+            <p className="text-[#A7B0C0] text-base max-w-sm leading-relaxed">
               We work with businesses and individuals at every stage of their journey.
             </p>
           </div>
-          <div className="w-12 h-px bg-[#C7A46C] mt-6" />
+          <div className="w-12 h-px bg-[#C8A46A] mt-6" />
         </AnimatedSection>
 
         {/* Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {clients.map((client, i) => (
             <AnimatedSection key={client.title} delay={0.08 * i}>
-              <div className="group relative p-8 bg-[#f8f9fb] rounded-sm hover:bg-[#0F2747] transition-all duration-400 cursor-default overflow-hidden">
-                {/* Gold corner accent on hover */}
-                <div className="absolute top-0 left-0 w-0 h-0.5 bg-[#C7A46C] group-hover:w-full transition-all duration-500" />
+              <div className="group relative p-8 bg-[#172338] rounded-[var(--radius-2xl)] hover:border-[#C8A46A]/20 hover:-translate-y-1 transition-all duration-300 cursor-default overflow-hidden border border-white/7 hover:shadow-[0_4px_24px_rgba(200,164,106,0.05)]">
+                {/* Gold top border on hover */}
+                <div className="absolute top-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#C8A46A] to-[#e8c98a] group-hover:w-full transition-all duration-500" />
 
-                <div className="w-12 h-12 rounded-sm bg-white flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#C7A46C]/10 transition-colors duration-300">
+                <div className="w-12 h-12 rounded-xl bg-white/6 flex items-center justify-center mb-6 group-hover:bg-[#C8A46A]/15 transition-colors duration-300">
                   <client.icon
                     size={22}
-                    className="text-[#0F2747] group-hover:text-[#C7A46C] transition-colors duration-300"
+                    className="text-[#A7B0C0] group-hover:text-[#C8A46A] transition-colors duration-300"
                   />
                 </div>
-                <h3 className="text-[#0F2747] group-hover:text-white font-bold text-lg mb-3 transition-colors duration-300">
+                <h3 className="text-[#F5F1EA] font-bold text-lg mb-3 transition-colors duration-300">
                   {client.title}
                 </h3>
-                <p className="text-gray-400 group-hover:text-white/50 text-sm leading-relaxed transition-colors duration-300">
+                <p className="text-[#A7B0C0] text-sm leading-relaxed transition-colors duration-300">
                   {client.desc}
                 </p>
               </div>

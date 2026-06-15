@@ -50,35 +50,37 @@ const posts = [
 
 export default function Insights() {
   return (
-    <section id="insights" className="py-28 bg-[#f8f9fb]">
-      <div className="max-w-[1240px] mx-auto px-6">
+    <section id="insights" className="py-32 bg-[#172338] relative overflow-hidden">
+      {/* Ambient glow */}
+      <div className="absolute bottom-0 right-0 w-[400px] h-[300px] rounded-full bg-[#4a3a6e]/8 blur-[120px] pointer-events-none" />
+      <div className="max-w-[1240px] mx-auto px-6 relative">
         {/* Header */}
         <AnimatedSection className="mb-16">
-          <span className="inline-flex items-center gap-2 text-[#C7A46C] text-xs font-semibold tracking-[0.18em] uppercase mb-4">
-            <span className="w-6 h-px bg-[#C7A46C]" />
+          <span className="inline-flex items-center gap-2 text-[#C8A46A] text-xs font-semibold tracking-[0.18em] uppercase mb-4">
+            <span className="w-6 h-px bg-[#C8A46A]" />
             Our Thinking
           </span>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <h2 className="font-playfair text-4xl lg:text-5xl text-[#0F2747] leading-tight">
+            <h2 className="font-playfair text-4xl lg:text-5xl text-[#F5F1EA] leading-tight">
               Insights &amp; Resources
             </h2>
             <a
               href="#"
-              className="text-[#C7A46C] text-sm font-semibold flex items-center gap-1.5 hover:gap-2.5 transition-all duration-200"
+              className="text-[#C8A46A] text-sm font-semibold flex items-center gap-1.5 hover:gap-2.5 transition-all duration-200"
             >
               View all articles <ArrowUpRight size={15} />
             </a>
           </div>
-          <div className="w-12 h-px bg-[#C7A46C] mt-6" />
+          <div className="w-12 h-px bg-[#C8A46A] mt-6" />
         </AnimatedSection>
 
         {/* Blog cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post, i) => (
             <AnimatedSection key={post.title} delay={0.1 * i}>
-              <article className="group bg-white rounded-sm overflow-hidden border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col h-full">
+              <article className="group bg-[#121B2A] rounded-[var(--radius-2xl)] overflow-hidden border border-white/7 hover:border-[#C8A46A]/18 hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col h-full">
                 {/* Image */}
-                <div className="aspect-[16/9] overflow-hidden bg-gray-100">
+                <div className="aspect-[16/9] overflow-hidden bg-[#101827]">
                   <img
                     src={post.image}
                     alt={post.title}
@@ -90,24 +92,24 @@ export default function Insights() {
                 {/* Content */}
                 <div className="p-7 flex flex-col flex-1">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="inline-flex items-center gap-1.5 text-[#C7A46C] text-xs font-semibold tracking-wide uppercase">
+                    <span className="inline-flex items-center gap-1.5 text-[#C8A46A] text-xs font-semibold tracking-wide uppercase">
                       <Tag size={11} />
                       {post.category}
                     </span>
-                    <span className="text-gray-300">·</span>
-                    <span className="text-gray-400 text-xs">{post.readTime}</span>
+                    <span className="text-white/20">·</span>
+                    <span className="text-[#A7B0C0] text-xs">{post.readTime}</span>
                   </div>
 
-                  <h3 className="font-playfair text-xl text-[#0F2747] leading-snug mb-3 group-hover:text-[#0F2747] flex-1">
+                  <h3 className="font-playfair text-xl text-[#F5F1EA] leading-snug mb-3 flex-1">
                     {post.title}
                   </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  <p className="text-[#A7B0C0] text-sm leading-relaxed mb-6">
                     {post.excerpt}
                   </p>
 
-                  <div className="flex items-center justify-between mt-auto pt-5 border-t border-gray-50">
-                    <span className="text-gray-300 text-xs">{post.date}</span>
-                    <span className="inline-flex items-center gap-1.5 text-[#C7A46C] text-xs font-semibold group-hover:gap-2.5 transition-all duration-200">
+                  <div className="flex items-center justify-between mt-auto pt-5 border-t border-white/8">
+                    <span className="text-white/20 text-xs">{post.date}</span>
+                    <span className="inline-flex items-center gap-1.5 text-[#C8A46A] text-xs font-semibold group-hover:gap-2.5 transition-all duration-200">
                       Read More <ArrowUpRight size={13} />
                     </span>
                   </div>

@@ -55,42 +55,43 @@ export default function GlobalAdvisory() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <section id="advisory" className="py-28 bg-[#091d3a] relative overflow-hidden">
-      {/* Subtle background pattern */}
+    <section id="advisory" className="py-32 bg-[#0B1220] relative overflow-hidden">
+      {/* Subtle dot pattern */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.025]"
         style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, #C7A46C 1px, transparent 0)`,
+          backgroundImage: `radial-gradient(circle at 1px 1px, #C8A46A 1px, transparent 0)`,
           backgroundSize: '40px 40px',
         }}
       />
-
+      {/* Ambient glow right */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#4a3a6e]/10 blur-[140px] pointer-events-none" />
       {/* Gold top border */}
-      <div className="absolute top-0 left-0 w-24 h-px bg-gradient-to-r from-[#C7A46C] to-transparent" />
+      <div className="absolute top-0 left-0 w-32 h-px bg-gradient-to-r from-[#C8A46A]/60 to-transparent" />
 
       <div className="max-w-[1240px] mx-auto px-6 relative">
         {/* Header */}
         <AnimatedSection className="mb-20">
-          <span className="text-[#C7A46C] text-xs font-semibold tracking-[0.2em] uppercase block mb-6">
+          <span className="text-[#C8A46A] text-xs font-semibold tracking-[0.2em] uppercase block mb-6">
             Strategic Services
           </span>
-          <h2 className="font-playfair text-5xl lg:text-7xl text-white leading-none tracking-tight mb-6">
+          <h2 className="font-playfair text-5xl lg:text-7xl text-[#F5F1EA] leading-none tracking-tight mb-6">
             Global
             <br />
-            <span className="text-[#C7A46C]">Advisory</span>
+            <span className="text-[#C8A46A]">Advisory</span>
           </h2>
-          <p className="text-white/40 text-base max-w-md leading-relaxed">
-            Strategic advisory services designed to accelerate business growth and navigate 
+          <p className="text-[#A7B0C0]/70 text-base max-w-md leading-relaxed">
+            Strategic advisory services designed to accelerate business growth and navigate
             complex financial landscapes.
           </p>
         </AnimatedSection>
 
         {/* Advisory list */}
-        <div className="border-t border-white/10">
+        <div className="border-t border-white/7">
           {advisoryItems.map((item, i) => (
             <AnimatedSection key={item.title} delay={0.06 * i}>
               <div
-                className="group border-b border-white/10 relative cursor-default"
+                className="group border-b border-white/7 relative cursor-default"
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
@@ -99,18 +100,18 @@ export default function GlobalAdvisory() {
                   initial={false}
                   animate={{ opacity: hoveredIndex === i ? 1 : 0 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute inset-0 bg-white/[0.03] pointer-events-none"
+                  className="absolute inset-0 bg-white/[0.018] pointer-events-none"
                 />
 
                 <div className="flex items-center justify-between py-7 px-2 lg:px-4 gap-8">
                   {/* Left */}
                   <div className="flex items-center gap-6 min-w-0">
-                    <span className="text-[#C7A46C]/40 text-xs font-mono tracking-widest shrink-0 hidden sm:block">
+                    <span className="text-[#C8A46A]/35 text-xs font-mono tracking-widest shrink-0 hidden sm:block">
                       {item.index}
                     </span>
                     <motion.h3
                       animate={{
-                        color: hoveredIndex === i ? '#C7A46C' : '#ffffff',
+                        color: hoveredIndex === i ? '#C8A46A' : '#F5F1EA',
                       }}
                       transition={{ duration: 0.2 }}
                       className="font-playfair text-2xl lg:text-3xl xl:text-4xl font-semibold tracking-tight"
@@ -128,7 +129,7 @@ export default function GlobalAdvisory() {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: 10 }}
                           transition={{ duration: 0.25 }}
-                          className="text-white/50 text-sm leading-relaxed max-w-sm text-right hidden lg:block"
+                          className="text-[#A7B0C0]/70 text-sm leading-relaxed max-w-sm text-right hidden lg:block"
                         >
                           {item.desc}
                         </motion.p>
@@ -138,7 +139,7 @@ export default function GlobalAdvisory() {
                     <motion.div
                       animate={{
                         x: hoveredIndex === i ? 4 : 0,
-                        color: hoveredIndex === i ? '#C7A46C' : 'rgba(255,255,255,0.3)',
+                        color: hoveredIndex === i ? '#C8A46A' : 'rgba(255,255,255,0.25)',
                       }}
                       transition={{ duration: 0.2 }}
                     >
@@ -157,7 +158,7 @@ export default function GlobalAdvisory() {
                       transition={{ duration: 0.25 }}
                       className="overflow-hidden lg:hidden"
                     >
-                      <p className="text-white/40 text-sm leading-relaxed px-2 pb-5">
+                      <p className="text-[#A7B0C0]/70 text-sm leading-relaxed px-2 pb-5">
                         {item.desc}
                       </p>
                     </motion.div>
