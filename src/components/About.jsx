@@ -34,11 +34,6 @@ export default function About() {
       <div className="max-w-[1240px] mx-auto px-6 relative">
         {/* Header */}
         <AnimatedSection className="text-center mb-20">
-          <span className="inline-flex items-center gap-2 text-[#C8A46A] text-xs font-semibold tracking-[0.18em] uppercase mb-4">
-            <span className="w-6 h-px bg-[#C8A46A]" />
-            Our Story
-            <span className="w-6 h-px bg-[#C8A46A]" />
-          </span>
           <h2 className="font-playfair text-4xl lg:text-5xl text-[#F5F1EA] mt-2">
             About Ginny &amp; Co.
           </h2>

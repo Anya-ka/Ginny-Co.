@@ -1,124 +1,363 @@
-import { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { CalendarDays, ArrowRight } from 'lucide-react';
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 28, filter: 'blur(4px)' },
-  animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
-  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay },
-});
+const services = [
+  {
+    title: 'Trusted CA Firm',
+    description:
+      'Strategic accounting, audit and advisory services built for growing businesses.',
+    image:
+      'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1800&q=80',
+  },
 
-// 6 images — duplicated for seamless loop
-const heroImages = [
-  'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80',
-  'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&q=80',
-  'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80',
-  'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
-  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80',
-  'https://images.unsplash.com/photo-1560472355-536de3962603?w=1200&q=80',
+  {
+    title: 'Company Incorporation',
+    description:
+      'End-to-end business incorporation and compliance support.',
+    image:
+      'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1800&q=80',
+  },
+
+  {
+    title: 'Income Tax &\nInternational Taxation',
+    description:
+      'Tax planning, filing and cross-border advisory for modern businesses.',
+    image:
+      'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=1800&q=80',
+  },
+
+  {
+    title: 'Accounting & Bookkeeping',
+    description:
+      'Reliable accounting systems for operational clarity.',
+    image:
+      'https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=1800&q=80',
+  },
+
+  {
+    title: 'GST Advisory',
+    description:
+      'Registration, compliance, audits and GST optimization.',
+    image:
+      'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1800&q=80',
+  },
 ];
 
+const fadeUp = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+  transition: {
+    duration: 0.9,
+    ease: [0.16, 1, 0.3, 1],
+  },
+};
+
 export default function Hero() {
-  const typewriterRef = useRef(null);
+  const [active, setActive] = useState(0);
 
   useEffect(() => {
-    const el = typewriterRef.current;
-    if (!el) return;
-    const timer = setTimeout(() => el.classList.add('typewriter-done'), 4100);
-    return () => clearTimeout(timer);
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % services.length);
+    }, 6000);
+
+    return () => clearInterval(timer);
   }, []);
 
-  const handleScroll = (href) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  const handleScroll = (id) => {
+    document.querySelector(id)?.scrollIntoView({
+      behavior: 'smooth',
+    });
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col overflow-hidden bg-[#0B1220]">
+    <section
+      id="hero"
+      className="
+           relative
+           h-screen
+           overflow-hidden
+           bg-[#0B1220]
+          "
+    >
 
-      {/* ── Sliding image strip ── */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="hero-slide-track h-full">
-          {[...heroImages, ...heroImages].map((src, i) => (
-            <div
-              key={i}
-              className="relative shrink-0 h-full"
-              style={{ width: 'calc(100% / 6)' }}
-            >
-              <img
-                src={src}
-                alt=""
-                className="w-full h-full object-cover"
-                loading={i < 2 ? 'eager' : 'lazy'}
-              />
-            </div>
-          ))}
-        </div>
+      {/* RIGHT IMAGE */}
 
-        {/* Dark overlay — slightly lifted, not pure black */}
-        <div className="absolute inset-0 bg-[#0B1220]/70" />
-        {/* Violet ambient glow bottom-left */}
-        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] rounded-full bg-[#4a3a6e]/18 blur-[140px] pointer-events-none" />
-        {/* Warm gold tint top-right */}
-        <div className="absolute -top-20 right-0 w-[400px] h-[400px] rounded-full bg-[#C8A46A]/6 blur-[120px] pointer-events-none" />
+      <div className="absolute right-0 top-0 w-[65%] h-full">
+
+        <AnimatePresence mode="wait">
+
+          <motion.img
+            key={active}
+            src={services[active].image}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+
+        </AnimatePresence>
+
+        <div className="absolute inset-0 bg-gradient-to-l from-black/20 via-black/45 to-black/75" />
+
       </div>
 
-      {/* Gold top line */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C8A46A] to-transparent z-10" />
+      {/* LEFT PANEL */}
 
-      {/* ── Centered content ── */}
-      <div className="relative flex-1 flex flex-col items-center justify-center text-center px-6 pt-24 pb-16 z-10">
+      <div
+        className="
+relative
+z-20
+w-[42%]
+h-full
+px-10
+md:pl-40
+md:pr-12
+flex
+items-center
+bg-gradient-to-r
+from-[#06111F]
+via-[#0B1D38]
+to-[#143A72]
+"
+      >
 
-        {/* Eyebrow */}
-    
-
-        {/* Headline */}
-        <motion.h1
-          {...fadeUp(0.18)}
-          className="font-playfair text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] text-[#F5F1EA] leading-[1.06] tracking-tight mb-5 max-w-5xl"
+        <motion.div
+          initial="initial"
+          animate="animate"
+          variants={fadeUp}
+          className="max-w-[750px]"
         >
-          Trusted Advisors for{' '}
-          <em className="not-italic gradient-gold">Every Stage</em>
-          <br className="hidden sm:block" />
-          {' '}of Your Business
-        </motion.h1>
 
-        {/* Typewriter */}
-        <motion.div {...fadeUp(0.5)} className="mb-6 h-7 flex items-center justify-center">
-          <span ref={typewriterRef} className="typewriter text-[#A7B0C0] text-base font-medium">
-            Taxation · Compliance · Audit · Financial Planning · Business Advisory
-          </span>
+          <div className="relative h-[140px] md:h-[160px]">
+            <AnimatePresence mode="wait">
+
+              <motion.h1
+                key={services[active].title}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.6 }}
+                className="
+absolute
+bottom-0
+left-0
+font-manrope
+font-bold
+text-[#F5F1EA]
+text-6xl
+md:text-[72px]
+leading-[0.92]
+tracking-[-0.04em]
+max-w-[600px]
+"
+              >
+
+                {services[active].title.split('\n').map((line, index) => (
+                  <div
+                    key={index}
+                    className={line === '&' ? 'text-center' : ''}
+                  >
+                    {line}
+                  </div>
+                ))}
+
+              </motion.h1>
+
+            </AnimatePresence>
+          </div>
+
+          <div
+            className="
+w-[480px]
+h-[6px]
+bg-[#D4A75F]
+mt-6
+mb-8
+"
+          />
+
+          <motion.p
+            key={services[active].description}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="
+text-[#D5DCE6]
+leading-10
+text-xl
+max-w-[600px]
+mb-8
+"
+          >
+
+            {services[active].description}
+
+          </motion.p>
+
+          <div className="flex gap-8">
+
+            <button
+              onClick={() => handleScroll('#contact')}
+              className="
+px-10
+py-5
+bg-[#D4A75F]
+text-[#07101F]
+text-lg
+font-semibold
+rounded-full
+shadow-lg
+hover:scale-105
+hover:bg-[#E0B777]
+transition-all
+duration-300
+"
+            >
+
+              <div className="flex items-center gap-3">
+
+                <CalendarDays size={20} />
+
+                LET'S TALK
+
+              </div>
+
+            </button>
+
+            <button
+              onClick={() => handleScroll('#services')}
+              className="
+text-white
+text-lg
+font-medium
+flex
+items-center
+gap-3
+hover:gap-5
+transition
+"
+            >
+
+              Explore Services
+
+              <ArrowRight size={22} />
+
+            </button>
+
+          </div>
+
         </motion.div>
 
-        {/* Description */}
-        <motion.p {...fadeUp(0.3)} className="text-[#A7B0C0] text-base sm:text-lg leading-relaxed max-w-2xl mb-10">
-          Ginny &amp; Co. partners with businesses and professionals to navigate complex
-          financial landscapes — with precision, clarity, and strategic insight.
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div {...fadeUp(0.38)} className="flex flex-wrap items-center justify-center gap-4">
-          <button
-            onClick={() => handleScroll('#contact')}
-            className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-[#C8A46A] text-[#070B14] text-sm font-bold rounded-full hover:bg-[#e0b87a] hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-[#C8A46A]/25 transition-all duration-200"
-          >
-            <CalendarDays size={15} />
-            Schedule Consultation
-          </button>
-          <button
-            onClick={() => handleScroll('#services')}
-            className="inline-flex items-center gap-2 text-[#F5F1EA]/75 text-sm font-semibold hover:text-[#F5F1EA] hover:gap-3 transition-all duration-200 group"
-          >
-            Explore Services
-            <span className="w-7 h-7 rounded-full border border-white/15 flex items-center justify-center group-hover:bg-white/8 group-hover:border-white/30 transition-all duration-200">
-              <ArrowRight size={13} />
-            </span>
-          </button>
-        </motion.div>
       </div>
 
-      {/* Bottom fade into next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#0B1220] to-transparent z-10" />
+      {/* DIAGONAL */}
+      <div
+        className="
+absolute
+left-[38%]
+top-0
+h-full
+w-[180px]
+bg-[#17396D]
+skew-x-[-10deg]
+origin-top
+z-10
+"
+      />
+
+      {/* SERVICE CARDS */}
+
+      <div
+        className="
+absolute
+bottom-10
+right-8
+flex
+gap-2
+z-30
+"
+      >
+
+        {services.map((item, index) => (
+
+          <div
+            key={index}
+            onMouseEnter={() => setActive(index)}
+            className={`
+relative
+cursor-pointer
+overflow-hidden
+transition-all
+duration-500
+h-[150px]
+
+${active === index
+                ? 'w-[300px]'
+                : 'w-[150px]'
+              }
+`}
+          >
+
+            <img
+              src={item.image}
+              className="
+absolute
+inset-0
+w-full
+h-full
+object-cover
+"
+            />
+
+            <div
+              className={`
+absolute
+inset-0
+
+${active === index
+                  ? 'bg-white'
+                  : 'bg-black/45'
+                }
+`}
+            />
+
+            <div
+              className="
+relative
+h-full
+p-4
+flex
+items-end
+"
+            >
+
+              <div
+                className={`
+text-sm
+leading-6
+uppercase
+font-semibold
+
+${active === index
+                    ? 'text-black'
+                    : 'text-white'
+                  }
+`}
+              >
+
+                {item.title}
+
+              </div>
+
+            </div>
+
+          </div>
+
+        ))}
+
+      </div>
+
     </section>
   );
 }

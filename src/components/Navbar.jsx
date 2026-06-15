@@ -4,54 +4,75 @@ import { Menu, X, ChevronDown, Calculator, Search, ShieldCheck, Receipt, Buildin
 
 const dropdowns = {
   Services: [
-    { icon: Calculator,  label: 'Taxation',         desc: 'Income tax, planning & advisory',    href: '#services' },
-    { icon: Receipt,     label: 'GST',               desc: 'Registration, filing & compliance',  href: '#services' },
-    { icon: Search,      label: 'Audit',             desc: 'Statutory, internal & tax audit',    href: '#services' },
-    { icon: ShieldCheck, label: 'Compliance',        desc: 'Regulatory & corporate filings',     href: '#services' },
+    { icon: Calculator, label: 'Taxation', desc: 'Income tax, planning & advisory', href: '#services' },
+    { icon: Receipt, label: 'GST', desc: 'Registration, filing & compliance', href: '#services' },
+    { icon: Search, label: 'Audit', desc: 'Statutory, internal & tax audit', href: '#services' },
+    { icon: ShieldCheck, label: 'Compliance', desc: 'Regulatory & corporate filings', href: '#services' },
   ],
   Advisory: [
-    { icon: BarChart3,   label: 'Business Strategy', desc: 'Growth & profitability planning',    href: '#advisory' },
-    { icon: Building2,   label: 'Financial Advisory',desc: 'Budgeting & cash flow optimisation', href: '#advisory' },
-    { icon: Handshake,   label: 'Debt & Banking',    desc: 'Structuring debt facilities',        href: '#advisory' },
+    { icon: BarChart3, label: 'Business Strategy', desc: 'Growth & profitability planning', href: '#advisory' },
+    { icon: Building2, label: 'Financial Advisory', desc: 'Budgeting & cash flow optimisation', href: '#advisory' },
+    { icon: Handshake, label: 'Debt & Banking', desc: 'Structuring debt facilities', href: '#advisory' },
   ],
   'Who We Serve': [
-    { icon: Rocket,       label: 'Startups',          desc: 'From incorporation to scale',        href: '#who-we-serve' },
-    { icon: Building2,    label: 'SMEs',              desc: 'Compliance & tax for businesses',    href: '#who-we-serve' },
-    { icon: Users,        label: 'Family Businesses', desc: 'Succession & restructuring',         href: '#who-we-serve' },
-    { icon: UserCircle,   label: 'Professionals',     desc: 'Doctors, lawyers, freelancers',      href: '#who-we-serve' },
-    { icon: ShoppingCart, label: 'E-commerce',        desc: 'GST, TCS & marketplace compliance',  href: '#who-we-serve' },
-    { icon: Heart,        label: 'NGOs & Trusts',     desc: 'Non-profit financial management',    href: '#who-we-serve' },
+    { icon: Rocket, label: 'Startups', desc: 'From incorporation to scale', href: '#who-we-serve' },
+    { icon: Building2, label: 'SMEs', desc: 'Compliance & tax for businesses', href: '#who-we-serve' },
+    { icon: Users, label: 'Family Businesses', desc: 'Succession & restructuring', href: '#who-we-serve' },
+    { icon: UserCircle, label: 'Professionals', desc: 'Doctors, lawyers, freelancers', href: '#who-we-serve' },
+    { icon: ShoppingCart, label: 'E-commerce', desc: 'GST, TCS & marketplace compliance', href: '#who-we-serve' },
+    { icon: Heart, label: 'NGOs & Trusts', desc: 'Non-profit financial management', href: '#who-we-serve' },
   ],
 };
 
 const navLinks = [
-  { label: 'About',          href: '#about' },
-  { label: 'Services',       href: '#services',     dropdown: true },
-  { label: 'Advisory',       href: '#advisory',     dropdown: true },
-  { label: 'Who We Serve',   href: '#who-we-serve', dropdown: true },
-  { label: 'Insights',       href: '#insights' },
-  { label: 'Contact',        href: '#contact' },
+  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services', dropdown: true },
+  { label: 'Advisory', href: '#advisory', dropdown: true },
+  { label: 'Who We Serve', href: '#who-we-serve', dropdown: true },
+  { label: 'Insights', href: '#insights' },
+  { label: 'Contact', href: '#contact' },
 ];
 
-function DropdownMenu({ label, onClose }) {
+function MegaMenu({ label, onClose }) {
   const items = dropdowns[label];
+  const cols = items.length <= 4 ? 4 : items.length <= 6 ? 3 : 4;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 6 }}
+      initial={{ opacity: 0, y: -4 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 6 }}
-      transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
-      className="absolute top-full left-1/2 -translate-x-1/2 mt-4 z-50"
+      exit={{ opacity: 0, y: -4 }}
+      transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed left-0 right-0 top-20 z-40 bg-white shadow-[0_8px_40px_rgba(0,0,0,0.12)]"
     >
-      {/* Arrow pointer */}
-      <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#121B2A] rotate-45 border-l border-t border-white/7 z-10" />
+      {/* Gold accent bar */}
+      <div className="h-[3px] bg-[#C8A46A]" />
 
-      <div className="relative bg-[#121B2A] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.35)] border border-white/7 overflow-hidden">
-        {/* Gold top bar */}
-        <div className="h-[3px] bg-gradient-to-r from-[#C8A46A]/40 via-[#C8A46A] to-[#C8A46A]/40" />
+      <div className="max-w-[1440px] mx-auto px-12 py-10">
+        {/* Header */}
+        <a
+          href={items[0]?.href || '#'}
+          onClick={(e) => {
+            e.preventDefault();
+            onClose();
+            const el = document.querySelector(items[0]?.href || '#');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="inline-flex items-center gap-3 mb-8 group"
+        >
+          <span className="text-[#0B1220] text-2xl font-bold tracking-tight">
+            {label}
+          </span>
+          <span className="text-[#0B1220] text-xl group-hover:translate-x-1 transition-transform duration-200">
+            →
+          </span>
+        </a>
 
-        <div className="py-3 px-2 min-w-[220px]">
+        {/* Items grid */}
+        <div
+          className="grid gap-x-12 gap-y-5"
+          style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
+        >
           {items.map((item) => (
             <a
               key={item.label}
@@ -62,15 +83,9 @@ function DropdownMenu({ label, onClose }) {
                 const el = document.querySelector(item.href);
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-white/[0.04] group transition-colors duration-150"
+              className="text-[#0B1220] text-[15px] font-medium hover:text-[#C8A46A] transition-colors duration-200 py-1"
             >
-              <div>
-                <div className="text-[#F4F1EA] text-sm font-semibold group-hover:text-[#C8A46A] transition-colors">
-                  {item.label}
-                </div>
-                <div className="text-[#AEB7C7] text-xs mt-0.5">{item.desc}</div>
-              </div>
-              <span className="opacity-0 group-hover:opacity-100 text-[#C8A46A] transition-opacity text-base leading-none ml-4">→</span>
+              {item.label}
             </a>
           ))}
         </div>
@@ -80,11 +95,11 @@ function DropdownMenu({ label, onClose }) {
 }
 
 export default function Navbar() {
-  const [scrolled, setScrolled]     = useState(false);
-  const [menuOpen, setMenuOpen]     = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [activeDropdown, setActive] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(null);
-  const timeoutRef                  = useRef(null);
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -92,8 +107,8 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const openDropdown  = (label) => { clearTimeout(timeoutRef.current); setActive(label); };
-  const closeDropdown = ()      => { timeoutRef.current = setTimeout(() => setActive(null), 120); };
+  const openDropdown = (label) => { clearTimeout(timeoutRef.current); setActive(label); };
+  const closeDropdown = () => { timeoutRef.current = setTimeout(() => setActive(null), 120); };
 
   const handleNavClick = (e, href) => {
     e.preventDefault();
@@ -109,14 +124,13 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-[#0B1220]/96 backdrop-blur-xl shadow-[0_2px_24px_rgba(0,0,0,0.4)] border-b border-white/7'
-            : 'bg-[#0B1220]/75 backdrop-blur-md'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+          ? 'bg-[#0B1220]/96 backdrop-blur-xl shadow-[0_2px_24px_rgba(0,0,0,0.4)] border-b border-white/7'
+          : 'bg-[#0B1220]/75 backdrop-blur-md'
+          }`}
         role="banner"
       >
-        <div className="max-w-[1240px] mx-auto px-6 flex items-center justify-between h-20">
+        <div className="max-w-[1440px] mx-auto px-8 flex items-center justify-between h-20">
 
           {/* Logo */}
           <a
@@ -125,14 +139,18 @@ export default function Navbar() {
             className="flex items-center gap-3 group"
             aria-label="Ginny & Co. Home"
           >
-            <div className={`w-11 h-11 rounded-xl flex items-center justify-center font-bold text-lg bg-[#C8A46A] text-[#0B1220] shadow-[0_0_20px_rgba(200,164,106,0.35)] transition-all duration-300 group-hover:shadow-[0_0_28px_rgba(200,164,106,0.5)]`}>
-              G
+            <div className="w-14 h-14 rounded-full overflow-hidden bg-white shadow-lg flex items-center justify-center">
+              <img
+                src="https://www.practive.in/wp-content/uploads/2023/11/ca-new-logo.jpg"
+                alt="CA Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="flex flex-col leading-tight">
-              <span className="font-bold text-lg tracking-wide text-[#F4F1EA] transition-colors duration-300" style={{ fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: '0.02em' }}>
-                Ginny <span className="text-[#C8A46A]">&amp;</span> Co.
+              <span className="font-bold text-2xl tracking-wide text-[#F4F1EA] transition-colors duration-300" style={{ fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: '0.02em' }}>
+                Ginny & Co.
               </span>
-              <span className="text-[10px] font-medium tracking-[0.14em] uppercase text-[#AEB7C7]/55 transition-colors duration-300">
+              <span className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#AEB7C7]/70 transition-colors duration-300">
                 Chartered Accountants
               </span>
             </div>
@@ -149,9 +167,8 @@ export default function Navbar() {
                   onMouseLeave={closeDropdown}
                 >
                   <button
-                    className={`flex items-center gap-2 text-[15px] font-medium tracking-wide transition-colors duration-200 relative group ${
-                      scrolled ? 'text-[#F4F1EA]/85 hover:text-[#C8A46A]' : 'text-[#F4F1EA]/75 hover:text-[#C8A46A]'
-                    }`}
+                    className={`flex items-center gap-2 text-[17px] font-semibold tracking-wide transition-colors duration-200 relative group ${scrolled ? 'text-[#F4F1EA]/90 hover:text-[#C8A46A]' : 'text-[#F4F1EA]/80 hover:text-[#C8A46A]'
+                      }`}
                   >
                     {link.label}
                     <ChevronDown
@@ -161,9 +178,14 @@ export default function Navbar() {
                     <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#C8A46A] transition-all duration-300 group-hover:w-full" />
                   </button>
 
+                  {/* Hover bridge to mega menu */}
+                  {activeDropdown === link.label && (
+                    <div className="absolute top-full left-0 w-full h-8" />
+                  )}
+
                   <AnimatePresence>
                     {activeDropdown === link.label && (
-                      <DropdownMenu
+                      <MegaMenu
                         label={link.label}
                         onClose={() => setActive(null)}
                       />
@@ -175,9 +197,8 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`text-[15px] font-medium tracking-wide transition-colors duration-200 relative group ${
-                    scrolled ? 'text-[#F4F1EA]/85 hover:text-[#C8A46A]' : 'text-[#F4F1EA]/75 hover:text-[#C8A46A]'
-                  }`}
+                  className={`text-[17px] font-semibold tracking-wide transition-colors duration-200 relative group ${scrolled ? 'text-[#F4F1EA]/90 hover:text-[#C8A46A]' : 'text-[#F4F1EA]/80 hover:text-[#C8A46A]'
+                    }`}
                 >
                   {link.label}
                   <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#C8A46A] transition-all duration-300 group-hover:w-full" />
@@ -188,7 +209,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, '#contact')}
-              className="ml-1 px-5 py-2.5 bg-[#C8A46A] text-[#0B1220] text-[15px] font-bold tracking-wide rounded-full hover:bg-[#d9b87a] hover:shadow-lg hover:shadow-[#C8A46A]/25 transition-all duration-200 hover:-translate-y-px"
+              className="ml-1 px-6 py-3 bg-[#C8A46A] text-[#0B1220] text-[16px] font-bold tracking-wide rounded-full hover:bg-[#d9b87a] hover:shadow-lg hover:shadow-[#C8A46A]/25 transition-all duration-200 hover:-translate-y-px"
             >
               Schedule Consultation
             </a>
@@ -216,7 +237,7 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="fixed top-20 left-0 right-0 z-40 bg-[#121B2A] border-b border-white/7 shadow-xl lg:hidden max-h-[80vh] overflow-y-auto"
           >
-            <div className="max-w-[1240px] mx-auto px-6 py-5 flex flex-col gap-1">
+            <div className="max-w-[1440px] mx-auto px-6 py-5 flex flex-col gap-1">
               {navLinks.map((link) => (
                 <div key={link.href}>
                   {link.dropdown ? (
