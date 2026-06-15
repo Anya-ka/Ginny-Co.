@@ -1,69 +1,8 @@
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { CalendarDays, ArrowRight } from 'lucide-react';
-
-const services = [
-  {
-    title: 'Trusted CA Firm',
-    description:
-      'Strategic accounting, audit and advisory services built for growing businesses.',
-    image:
-      'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1800&q=80',
-  },
-
-  {
-    title: 'Company Incorporation',
-    description:
-      'End-to-end business incorporation and compliance support.',
-    image:
-      'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1800&q=80',
-  },
-
-  {
-    title: 'Income Tax &\nInternational Taxation',
-    description:
-      'Tax planning, filing and cross-border advisory for modern businesses.',
-    image:
-      'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=1800&q=80',
-  },
-
-  {
-    title: 'Accounting & Bookkeeping',
-    description:
-      'Reliable accounting systems for operational clarity.',
-    image:
-      'https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=1800&q=80',
-  },
-
-  {
-    title: 'GST Advisory',
-    description:
-      'Registration, compliance, audits and GST optimization.',
-    image:
-      'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1800&q=80',
-  },
-];
-
-const fadeUp = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: {
-    duration: 0.9,
-    ease: [0.16, 1, 0.3, 1],
-  },
-};
+import img from './img.png';
 
 export default function Hero() {
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActive((prev) => (prev + 1) % services.length);
-    }, 6000);
-
-    return () => clearInterval(timer);
-  }, []);
-
   const handleScroll = (id) => {
     document.querySelector(id)?.scrollIntoView({
       behavior: 'smooth',
@@ -73,289 +12,58 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="
-           relative
-           h-screen
-           overflow-hidden
-           bg-[#0B1220]
-          "
+      className="relative w-full bg-[#0B1220] pt-24 pb-20 md:pb-28"
     >
-
-      {/* RIGHT IMAGE */}
-
-      <div className="absolute right-0 top-0 w-[65%] h-full">
-
-        <AnimatePresence mode="wait">
-
-          <motion.img
-            key={active}
-            src={services[active].image}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="absolute inset-0 w-full h-full object-cover"
+      {/* ROTHSCHILD-STYLE INSET VISUAL FRAME */}
+      <div className="max-w-[1440px] mx-auto px-8 relative z-0">
+        <div className="relative h-[65vh] md:h-[80vh] w-full overflow-hidden">
+          <img
+            src="https://gustavconcept.com/cdn/shop/articles/QIC_SYD_Unispace_QIC_resized_2_copy.jpg?v=1691409476"
+            alt="Financial Consulting and Accounting"
+            className="w-full h-full object-cover"
           />
-
-        </AnimatePresence>
-
-        <div className="absolute inset-0 bg-gradient-to-l from-black/20 via-black/45 to-black/75" />
-
+          {/* Soft overlay gradient for premium tone */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#0B1220]/40 via-black/10 to-[#0B1220]/20" />
+        </div>
       </div>
 
-      {/* LEFT PANEL */}
-
-      <div
-        className="
-relative
-z-20
-w-[42%]
-h-full
-px-10
-md:pl-40
-md:pr-12
-flex
-items-center
-bg-gradient-to-r
-from-[#06111F]
-via-[#0B1D38]
-to-[#143A72]
-"
-      >
-
+      {/* ROTHSCHILD-STYLE OVERLAPPING TEXT CARD (Shifted to the right) */}
+      <div className="absolute bottom-15 left-0 md:left-12 lg:left-20 w-full md:w-[60%] lg:w-[50%] z-20">
         <motion.div
-          initial="initial"
-          animate="animate"
-          variants={fadeUp}
-          className="max-w-[750px]"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="bg-[#F9F8F6] shadow-[0_20px_50px_rgba(0,0,0,0.15)] w-full pt-8 pb-10 px-6 md:pl-16 md:pr-24 rothschild-clip"
         >
-
-          <div className="relative h-[140px] md:h-[160px]">
-            <AnimatePresence mode="wait">
-
-              <motion.h1
-                key={services[active].title}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.6 }}
-                className="
-absolute
-bottom-0
-left-0
-font-manrope
-font-bold
-text-[#F5F1EA]
-text-6xl
-md:text-[72px]
-leading-[0.92]
-tracking-[-0.04em]
-max-w-[600px]
-"
-              >
-
-                {services[active].title.split('\n').map((line, index) => (
-                  <div
-                    key={index}
-                    className={line === '&' ? 'text-center' : ''}
-                  >
-                    {line}
-                  </div>
-                ))}
-
-              </motion.h1>
-
-            </AnimatePresence>
-          </div>
-
-          <div
-            className="
-w-[480px]
-h-[6px]
-bg-[#D4A75F]
-mt-6
-mb-8
-"
-          />
-
-          <motion.p
-            key={services[active].description}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="
-text-[#D5DCE6]
-leading-10
-text-xl
-max-w-[600px]
-mb-8
-"
+          {/* Heading */}
+          <h1
+            className="font-bold text-[#0B1220] text-2xl md:text-[36px] lg:text-[40px] leading-[1.25] tracking-tight mb-5"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
           >
+            A young boutique CA firm helping businesses build, grow and succeed.
+          </h1>
 
-            {services[active].description}
-
-          </motion.p>
-
-          <div className="flex gap-8">
-
+          {/* Action Buttons */}
+          <div className="flex flex-wrap items-center gap-6 pt-5 border-t border-[#0B1220]/10">
             <button
               onClick={() => handleScroll('#contact')}
-              className="
-px-10
-py-5
-bg-[#D4A75F]
-text-[#07101F]
-text-lg
-font-semibold
-rounded-full
-shadow-lg
-hover:scale-105
-hover:bg-[#E0B777]
-transition-all
-duration-300
-"
+              className="px-7 py-3 bg-[#0B1220] text-[#F9F8F6] text-[14px] font-semibold tracking-wide hover:bg-[#C8A46A] hover:text-[#0B1220] transition-colors duration-300 shadow-md"
             >
-
               <div className="flex items-center gap-3">
-
-                <CalendarDays size={20} />
-
+                <CalendarDays size={16} />
                 LET'S TALK
-
               </div>
-
             </button>
 
             <button
               onClick={() => handleScroll('#services')}
-              className="
-text-white
-text-lg
-font-medium
-flex
-items-center
-gap-3
-hover:gap-5
-transition
-"
+              className="text-[#0B1220] font-bold text-[14px] flex items-center gap-2 hover:gap-4 transition-all duration-300 group"
             >
-
               Explore Services
-
-              <ArrowRight size={22} />
-
+              <ArrowRight size={16} className="text-[#C8A46A] group-hover:translate-x-1 transition-transform" />
             </button>
-
           </div>
-
         </motion.div>
-
-      </div>
-
-      {/* DIAGONAL */}
-      <div
-        className="
-absolute
-left-[38%]
-top-0
-h-full
-w-[180px]
-bg-[#17396D]
-skew-x-[-10deg]
-origin-top
-z-10
-"
-      />
-
-      {/* SERVICE CARDS */}
-
-      <div
-        className="
-absolute
-bottom-10
-right-8
-flex
-gap-2
-z-30
-"
-      >
-
-        {services.map((item, index) => (
-
-          <div
-            key={index}
-            onMouseEnter={() => setActive(index)}
-            className={`
-relative
-cursor-pointer
-overflow-hidden
-transition-all
-duration-500
-h-[150px]
-
-${active === index
-                ? 'w-[300px]'
-                : 'w-[150px]'
-              }
-`}
-          >
-
-            <img
-              src={item.image}
-              className="
-absolute
-inset-0
-w-full
-h-full
-object-cover
-"
-            />
-
-            <div
-              className={`
-absolute
-inset-0
-
-${active === index
-                  ? 'bg-white'
-                  : 'bg-black/45'
-                }
-`}
-            />
-
-            <div
-              className="
-relative
-h-full
-p-4
-flex
-items-end
-"
-            >
-
-              <div
-                className={`
-text-sm
-leading-6
-uppercase
-font-semibold
-
-${active === index
-                    ? 'text-black'
-                    : 'text-white'
-                  }
-`}
-              >
-
-                {item.title}
-
-              </div>
-
-            </div>
-
-          </div>
-
-        ))}
-
       </div>
 
     </section>

@@ -139,15 +139,11 @@ export default function Navbar() {
             className="flex items-center gap-3 group"
             aria-label="Ginny & Co. Home"
           >
-            <div className="w-14 h-14 rounded-full overflow-hidden bg-white shadow-lg flex items-center justify-center">
-              <img
-                src="https://www.practive.in/wp-content/uploads/2023/11/ca-new-logo.jpg"
-                alt="CA Logo"
-                className="w-full h-full object-cover"
-              />
+            <div className="w-12 h-12 rounded-full bg-[#C8A46A] text-[#0B1220] flex items-center justify-center font-bold text-xl shadow-[0_0_20px_rgba(200,164,106,0.25)] transition-all duration-300 group-hover:scale-105">
+              G
             </div>
             <div className="flex flex-col leading-tight">
-              <span className="font-bold text-2xl tracking-wide text-[#F4F1EA] transition-colors duration-300" style={{ fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: '0.02em' }}>
+              <span className="font-bold text-2xl tracking-wide text-[#F4F1EA] transition-colors duration-300" style={{ fontFamily: "'Source Sans 3', 'Source Sans Pro', sans-serif", letterSpacing: '0.02em' }}>
                 Ginny & Co.
               </span>
               <span className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#AEB7C7]/70 transition-colors duration-300">
