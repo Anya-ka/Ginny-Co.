@@ -170,12 +170,12 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="max-w-[1240px] mx-auto px-6 py-6">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[#111827]/30 text-xs">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[oklab(75.518%_-.00345892_-.0248396_/_0.75)] text-xs">
           <p>© {new Date().getFullYear()} Ginny &amp; Co. Chartered Accountants. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <a href="#privacy-policy" className="hover:text-[#111827]/50 transition-colors">Privacy Policy</a>
-            <a href="#terms-of-service" className="hover:text-[#111827]/50 transition-colors">Terms of Service</a>
-            <a href="#disclaimer" className="hover:text-[#111827]/50 transition-colors">Disclaimer</a>
+            <a href="#privacy-policy" className="text-[oklab(75.518%_-.00345892_-.0248396_/_0.75)] hover:text-[#F5F1EA] transition-colors">Privacy Policy</a>
+            <a href="#terms-of-service" className="text-[oklab(75.518%_-.00345892_-.0248396_/_0.75)] hover:text-[#F5F1EA] transition-colors">Terms of Service</a>
+            <a href="#disclaimer" className="text-[oklab(75.518%_-.00345892_-.0248396_/_0.75)] hover:text-[#F5F1EA] transition-colors">Disclaimer</a>
           </div>
         </div>
       </div>
