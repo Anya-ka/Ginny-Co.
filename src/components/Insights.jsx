@@ -50,7 +50,7 @@ const posts = [
 
 export default function Insights() {
   return (
-    <section id="insights" className="py-24 lg:py-32 bg-[#070B14] relative overflow-hidden">
+    <section id="insights" className="py-24 lg:py-32 bg-[#F9F7F2] relative overflow-hidden">
       {/* Ambient glow */}
       <div className="absolute bottom-0 right-0 w-[400px] h-[300px] rounded-full bg-[#4a3a6e]/8 blur-[120px] pointer-events-none" />
       <div className="max-w-[1240px] mx-auto px-6 relative">
@@ -61,7 +61,7 @@ export default function Insights() {
             Our Thinking
           </span>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <h2 className="font-heading text-4xl lg:text-5xl text-[#F5F1EA] leading-tight">
+            <h2 className="font-heading text-4xl lg:text-5xl text-[#111827] leading-tight">
               Insights &amp; Resources
             </h2>
             <a
@@ -78,9 +78,9 @@ export default function Insights() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post, i) => (
             <AnimatedSection key={post.title} delay={0.1 * i}>
-              <article className="group bg-[#121B2A] rounded-[var(--radius-2xl)] overflow-hidden border border-white/[0.06] hover:border-[#C8A46A]/18 hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col h-full">
+              <article className="group bg-[#FFFFFF] rounded-[var(--radius-2xl)] overflow-hidden border border-black/[0.06] hover:border-[#C8A46A]/18 hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col h-full">
                 {/* Image */}
-                <div className="aspect-[16/9] overflow-hidden bg-[#101827]">
+                <div className="aspect-[16/9] overflow-hidden bg-[#ECE7E0]">
                   <img
                     src={post.image}
                     alt={post.title}
@@ -96,19 +96,19 @@ export default function Insights() {
                       <Tag size={11} />
                       {post.category}
                     </span>
-                    <span className="text-[#F5F1EA]/20">·</span>
-                    <span className="text-[#A7B0C0]/90 text-xs">{post.readTime}</span>
+                    <span className="text-[#111827]/20">·</span>
+                    <span className="text-[#475569]/90 text-xs">{post.readTime}</span>
                   </div>
 
-                  <h3 className="font-heading text-xl text-[#F5F1EA] leading-snug mb-3 flex-1">
+                  <h3 className="font-heading text-xl text-[#111827] leading-snug mb-3 flex-1">
                     {post.title}
                   </h3>
-                  <p className="text-[#A7B0C0]/90 text-sm leading-relaxed mb-6">
+                  <p className="text-[#475569]/90 text-sm leading-relaxed mb-6">
                     {post.excerpt}
                   </p>
 
-                  <div className="flex items-center justify-between mt-auto pt-5 border-t border-white/[0.06]">
-                    <span className="text-[#F5F1EA]/20 text-xs">{post.date}</span>
+                  <div className="flex items-center justify-between mt-auto pt-5 border-t border-black/[0.06]">
+                    <span className="text-[#111827]/20 text-xs">{post.date}</span>
                     <span className="inline-flex items-center gap-1.5 text-[#C8A46A] text-xs font-semibold group-hover:gap-2.5 transition-all duration-200">
                       Read More <ArrowUpRight size={13} />
                     </span>

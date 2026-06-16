@@ -38,8 +38,8 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed z-50 transition-all duration-500 left-0 right-0 mx-auto w-[92%] max-w-[1240px] ${scrolled
-          ? 'top-4 bg-[#121B2A]/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] border border-white/[0.08] rounded-2xl'
-          : 'top-6 bg-[#121B2A]/80 backdrop-blur-md border border-white/[0.04] rounded-2xl'
+          ? 'top-4 bg-[#0b1220]/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] border border-[#0b1220]/60 rounded-2xl'
+          : 'top-6 bg-[#0b1220]/90 backdrop-blur-md border border-[#0b1220]/40 rounded-2xl'
           }`}
         role="banner"
       >
@@ -52,7 +52,7 @@ export default function Navbar() {
             className="flex items-center gap-3 group relative z-10"
             aria-label="Ginny & Co. Home"
           >
-            <div className="w-12 h-12 rounded-full bg-[#C8A46A] text-[#0B1220] flex items-center justify-center font-bold text-xl shadow-[0_0_20px_rgba(200,164,106,0.25)] transition-all duration-300 group-hover:scale-105">
+            <div className="w-12 h-12 rounded-full bg-[#C8A46A] text-[#F9F7F2] flex items-center justify-center font-bold text-xl shadow-[0_0_20px_rgba(200,164,106,0.25)] transition-all duration-300 group-hover:scale-105">
               G
             </div>
             <div className="flex flex-col leading-tight justify-center">
@@ -85,7 +85,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, '#contact')}
-              className="hidden lg:inline-flex px-6 py-3 bg-[#C8A46A] text-[#0B1220] text-[16px] font-bold tracking-wide rounded-full hover:bg-[#d9b87a] hover:shadow-lg hover:shadow-[#C8A46A]/25 transition-all duration-200 hover:-translate-y-px"
+              className="hidden lg:inline-flex px-6 py-3 bg-[#C8A46A] text-[#F9F7F2] text-[16px] font-bold tracking-wide rounded-full hover:bg-[#d9b87a] hover:shadow-lg hover:shadow-[#C8A46A]/25 transition-all duration-200 hover:-translate-y-px"
             >
               Schedule Consultation
             </a>
@@ -111,7 +111,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-20 left-0 right-0 z-40 bg-[#121B2A] border-b border-white/[0.06] shadow-xl lg:hidden max-h-[80vh] overflow-y-auto"
+            className="fixed top-20 left-0 right-0 z-40 bg-[#FFFFFF] border-b border-black/[0.06] shadow-xl lg:hidden max-h-[80vh] overflow-y-auto"
           >
             <div className="max-w-[1440px] mx-auto px-6 py-5 flex flex-col gap-1">
               {navLinks.map((link) => (
@@ -119,7 +119,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="block py-3.5 text-[#F5F1EA] font-semibold text-base border-b border-white/[0.06] hover:text-[#C8A46A] transition-colors"
+                  className="block py-3.5 text-[#111827] font-semibold text-base border-b border-black/[0.06] hover:text-[#C8A46A] transition-colors"
                 >
                   {link.label}
                 </a>
@@ -127,7 +127,7 @@ export default function Navbar() {
               <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, '#contact')}
-                className="mt-4 px-6 py-3 bg-[#C8A46A] text-[#0B1220] text-sm font-bold rounded-full text-center hover:bg-[#d9b87a] transition-colors"
+                className="mt-4 px-6 py-3 bg-[#C8A46A] text-[#F9F7F2] text-sm font-bold rounded-full text-center hover:bg-[#d9b87a] transition-colors"
               >
                 Schedule Consultation
               </a>

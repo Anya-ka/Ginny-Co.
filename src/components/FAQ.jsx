@@ -50,19 +50,23 @@ function FAQItem({ q, a, index }) {
 
   return (
     <AnimatedSection delay={0.05 * index}>
-      <div className={`border rounded-[26px] overflow-hidden transition-all duration-300 ${open ? 'border-[#C8A46A]/35 bg-[#121B2A]/95 shadow-[0_18px_48px_rgba(0,0,0,0.22),0_0_28px_rgba(200,164,106,0.08)]' : 'border-white/[0.07] bg-[#121B2A]/65 hover:border-white/[0.14] hover:bg-[#121B2A]/85'}`}>
+      <div className={`border rounded-[26px] overflow-hidden transition-all duration-300 ${
+  open
+    ? 'border-[#C8A46A]/35 bg-[#F8F6F2] shadow-[0_10px_24px_rgba(0,0,0,0.12)]'
+    : 'border-[#E5E7EB] bg-[#F3F1EC] hover:bg-[#F8F6F2] hover:border-[#D4B176]/40 shadow-[0_4px_12px_rgba(0,0,0,0.05)]'
+}`}>
         <button
           onClick={() => setOpen(!open)}
           className="w-full flex items-center justify-between px-6 md:px-7 py-6 text-left group"
           aria-expanded={open}
         >
-          <span className={`text-base md:text-lg font-semibold pr-6 transition-colors duration-200 leading-snug ${open ? 'text-[#E2C17E]' : 'text-[#FFF8E8] group-hover:text-[#E2C17E]'}`}>
+          <span className={`text-base md:text-lg font-semibold pr-6 transition-colors duration-200 leading-snug ${open ? 'text-[#E2C17E]' : 'text-[#111827] group-hover:text-[#E2C17E]'}`}>
             {q}
           </span>
           <span className={`shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-200 ${
             open
-              ? 'border-[#C8A46A] bg-[#C8A46A] text-[#070B14]'
-              : 'border-white/[0.1] text-[#A7B0C0] group-hover:border-[#C8A46A]/50 group-hover:text-[#C8A46A]'
+              ? 'border-[#C8A46A] bg-[#C8A46A] text-[#F9F7F2]'
+              : 'border-black/[0.1] text-[#475569] group-hover:border-[#C8A46A]/50 group-hover:text-[#C8A46A]'
           }`}>
             {open ? <Minus size={13} /> : <Plus size={13} />}
           </span>
@@ -77,7 +81,7 @@ function FAQItem({ q, a, index }) {
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden"
             >
-              <p className="text-[#D7DEE8] text-sm leading-relaxed px-6 md:px-7 pb-7 md:pr-16">
+              <p className="text-[#475569] text-sm leading-relaxed px-6 md:px-7 pb-7 md:pr-16">
                 {a}
               </p>
             </motion.div>
@@ -104,24 +108,24 @@ export default function FAQ() {
               <Circle size={9} className="text-[#C8A46A]" strokeWidth={3} />
               <span className="text-[#C8A46A] text-[11px] font-bold tracking-[0.2em] uppercase">FAQs</span>
             </div>
-            <h2 className="font-heading text-5xl lg:text-7xl text-[#FFF8E8] leading-tight mb-6 drop-shadow-[0_16px_34px_rgba(0,0,0,0.22)]">
+            <h2 className="font-heading text-5xl lg:text-7xl text-[#F5F1EA] leading-tight mb-6 drop-shadow-[0_16px_34px_rgba(0,0,0,0.22)]">
               Common Questions
             </h2>
-            <p className="text-[#D7DEE8] text-base leading-relaxed mb-10">
+            <p className="text-[#BFDBFE] text-base leading-relaxed mb-10">
               Can't find your answer here? Reach out and we'll respond within one business day.
             </p>
 
             {/* Contact prompt card */}
-            <div className="bg-[#121B2A]/90 border border-white/[0.08] rounded-[30px] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.26)]">
-              <div className="w-12 h-12 rounded-2xl bg-[#C8A46A]/10 border border-[#C8A46A]/20 flex items-center justify-center mb-4">
+            <div className="bg-[#0B1220]/60 border border-white/20 rounded-[30px] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.6)]">
+              <div className="w-12 h-12 rounded-2xl bg-[#C8A46A]/20 border border-[#C8A46A]/40 flex items-center justify-center mb-4">
                 <MessageSquare size={16} className="text-[#C8A46A]" />
               </div>
-              <h4 className="font-heading text-2xl text-[#FFF8E8] mb-2">Still have questions?</h4>
-              <p className="text-[#A7B0C0] text-sm leading-relaxed mb-5">Our team is happy to walk you through anything specific to your situation.</p>
+              <h4 className="font-heading text-2xl text-[#F5F1EA] mb-2">Still have questions?</h4>
+              <p className="text-[#BFDBFE] text-sm leading-relaxed mb-5">Our team is happy to walk you through anything specific to your situation.</p>
               <a
                 href="#contact"
                 onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A46A] text-[#0B1220] font-bold rounded-full text-sm hover:bg-[#d9b87a] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(200,164,106,0.25)]"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A46A] text-[#F9F7F2] font-bold rounded-full text-sm hover:bg-[#d9b87a] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(200,164,106,0.25)]"
               >
                 Ask a Question
               </a>

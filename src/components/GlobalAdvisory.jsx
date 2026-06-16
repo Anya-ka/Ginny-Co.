@@ -88,66 +88,80 @@ export default function GlobalAdvisory() {
       <div className="max-w-[1240px] mx-auto px-6 relative">
         <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] items-start">
           <AnimatedSection className="space-y-7 lg:sticky lg:top-24">
-            <div className="inline-flex items-center gap-3 rounded-full bg-[#C8A46A]/10 px-4 py-2 border border-[#C8A46A]/20 text-[#C8A46A] text-xs font-semibold uppercase tracking-[0.22em]">
-              <Circle size={10} className="text-[#C8A46A]" />
-              Strategic Advisory
-            </div>
+            <div className="flex items-center gap-3 mb-6">
+            <Circle size={9} className="text-[#C8A46A]" strokeWidth={3} />
+            <span className="text-[#C8A46A] text-[11px] font-bold tracking-[0.2em] uppercase">Strategic Advisory</span>
+          </div>
             <div className="space-y-5">
-              <h2 className="font-heading text-5xl lg:text-[68px] text-[#FFF8E8] leading-[1.04] tracking-tight drop-shadow-[0_16px_34px_rgba(0,0,0,0.25)]">
+              <h2 className="font-heading text-5xl lg:text-[68px] text-[#F5F1EA] leading-[1.04] tracking-tight drop-shadow-[0_16px_34px_rgba(0,0,0,0.25)]">
                 Global Advisory
               </h2>
-              <p className="text-[#D7DEE8] text-lg max-w-xl leading-relaxed">
+              <p className="text-[#BFDBFE] text-lg max-w-xl leading-relaxed">
                 Bring confidence to every major decision with high-impact advisory that blends strategy, finance, and compliance into one unified growth engine.
               </p>
             </div>
 
-            <div className="relative overflow-hidden rounded-[34px] border border-white/[0.08] bg-[#121B2A]/90 shadow-[0_30px_80px_rgba(0,0,0,0.32)]">
-              <div className="relative h-72 overflow-hidden">
-                <img
-                  src={cardImages[activeIndex]}
-                  alt={activeItem.title}
-                  className="absolute inset-0 h-full w-full object-cover object-center transition-all duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/48 to-[#0B1220]/8" />
-                <div className="absolute left-6 top-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.14] bg-[#0B1220]/75 text-[#E2C17E] shadow-[0_12px_30px_rgba(0,0,0,0.26)] backdrop-blur-sm">
-                  <activeItem.icon size={23} />
-                </div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <span className="mb-3 inline-flex rounded-full border border-[#C8A46A]/25 bg-[#C8A46A]/12 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#E2C17E]">
-                    Focus {activeItem.index}
-                  </span>
-                  <h3 className="font-heading text-3xl text-[#FFF8E8] leading-tight">
-                    {activeItem.title}
-                  </h3>
-                </div>
-              </div>
-              <div className="p-6">
-                <p className="text-[#D7DEE8] text-sm leading-relaxed">
-                  {activeItem.desc}
-                </p>
-                <div className="mt-6 grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.06]">
-                  {[
-                    ['360°', 'Advisory'],
-                    ['6', 'Focus Areas'],
-                    ['1:1', 'Partner Led'],
-                  ].map(([value, label]) => (
-                    <div key={label} className="bg-[#0B1220]/82 p-4 text-center">
-                      <div className="font-heading text-2xl text-[#FFF8E8]">{value}</div>
-                      <div className="mt-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#A7B0C0]">{label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <div className="relative overflow-hidden rounded-[34px] border border-black/[0.08] bg-[#F9F7F2]/95 shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
+  <div className="relative h-72 overflow-hidden">
+    <img
+      src={cardImages[activeIndex]}
+      alt={activeItem.title}
+      className="absolute inset-0 h-full w-full object-cover object-center transition-all duration-500"
+    />
+
+    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/15 to-transparent" />
+
+    <div className="absolute left-6 top-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#C8A46A]/20 bg-[#F9F7F2]/90 text-[#C8A46A] shadow-[0_12px_30px_rgba(0,0,0,0.08)] backdrop-blur-sm">
+      <activeItem.icon size={23} />
+    </div>
+
+    <div className="absolute bottom-6 left-6 right-6">
+      <span className="mb-3 inline-flex rounded-full border border-[#C8A46A]/20 bg-[#C8A46A]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#C8A46A]">
+        Focus {activeItem.index}
+      </span>
+
+      <h3 className="font-heading text-3xl text-white leading-tight">
+        {activeItem.title}
+      </h3>
+    </div>
+  </div>
+
+  <div className="p-6 bg-[#F9F7F2]/95">
+    <p className="text-[#475569] text-sm leading-relaxed">
+      {activeItem.desc}
+    </p>
+
+    <div className="mt-6 grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-black/[0.08] bg-black/[0.03]">
+      {[
+        ['360°', 'Advisory'],
+        ['6', 'Focus Areas'],
+        ['1:1', 'Partner Led'],
+      ].map(([value, label]) => (
+        <div
+          key={label}
+          className="bg-white p-4 text-center border border-black/[0.06]"
+        >
+          <div className="font-heading text-2xl text-[#111827]">
+            {value}
+          </div>
+
+          <div className="mt-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#475569]">
+            {label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
 
             <div className="grid gap-4 sm:grid-cols-2">
               {[
                 ['Trusted Expertise', 'Complex corporate finance translated into clear, board-ready decisions.'],
                 ['Hands-on Execution', 'Advisory that stays close to implementation, reporting, and follow-through.'],
               ].map(([title, copy]) => (
-                <div key={title} className="rounded-3xl border border-white/[0.08] bg-[#121B2A]/80 p-5 shadow-[0_18px_44px_rgba(0,0,0,0.18)]">
-                  <span className="text-[#E2C17E] text-xs uppercase tracking-[0.22em] font-semibold">{title}</span>
-                  <p className="mt-3 text-[#A7B0C0] text-sm leading-relaxed">{copy}</p>
+                <div key={title} className="rounded-3xl border border-white/20 bg-[#0B1220]/40 p-5 shadow-[0_18px_44px_rgba(0,0,0,0.4)]">
+                  <span className="text-[#C8A46A] text-xs uppercase tracking-[0.22em] font-semibold">{title}</span>
+                  <p className="mt-3 text-[#BFDBFE] text-sm leading-relaxed">{copy}</p>
                 </div>
               ))}
             </div>
@@ -157,38 +171,42 @@ export default function GlobalAdvisory() {
             <div className="grid gap-5 sm:grid-cols-2">
               {advisoryItems.map((item, index) => (
                 <motion.button
-                  key={item.index}
-                  type="button"
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  className="group relative overflow-hidden rounded-[30px] border border-white/[0.06] bg-[#121B2A]/90 text-left shadow-[0_20px_45px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-1 hover:border-[#C8A46A]/30 hover:bg-[#192438]/95"
-                >
-                  <div className="relative h-40 overflow-hidden rounded-t-[30px]">
-                    <img
-                      src={cardImages[index]}
-                      alt={item.title}
-                      className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220]/85 via-[#0B1220]/10 to-transparent" />
-                    <div className="absolute inset-x-6 top-6 flex items-center justify-between">
-                      <span className="rounded-full bg-[#0B1220]/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#F5F1EA] border border-white/[0.08]">
-                        {item.index}
-                      </span>
-                      <div className="rounded-2xl bg-[#0B1220]/70 border border-white/[0.08] p-3 text-[#C8A46A] shadow-[0_12px_24px_rgba(0,0,0,0.2)]">
-                        <item.icon size={18} />
-                      </div>
-                    </div>
-                  </div>
+  key={item.index}
+  type="button"
+  onMouseEnter={() => setHoveredIndex(index)}
+  onMouseLeave={() => setHoveredIndex(null)}
+  className="group relative overflow-hidden rounded-[30px] border border-black/[0.08] bg-[#F9F7F2]/95 text-left shadow-[0_20px_45px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:border-black/[0.12]"
+>
+  <div className="relative h-40 overflow-hidden rounded-t-[30px]">
+    <img
+      src={cardImages[index]}
+      alt={item.title}
+      className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+    />
 
-                  <div className="p-5 bg-[#0B1220]/90 rounded-b-[30px]">
-                    <h3 className="font-heading text-xl text-[#FFF8E8] leading-snug mb-3">{item.title}</h3>
-                    <p className="text-[#A7B0C0] text-sm leading-relaxed mb-6">{item.desc}</p>
-                    <div className="inline-flex items-center gap-2 text-[#E2C17E] font-semibold text-sm">
-                      <span>Explore more</span>
-                      <ArrowUpRight size={14} />
-                    </div>
-                  </div>
-                </motion.button>
+    <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
+
+    <div className="absolute inset-x-6 top-6 flex items-center justify-between">
+      <span className="rounded-full bg-[#C8A46A]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#C8A46A] border border-[#C8A46A]/20">
+        {item.index}
+      </span>
+
+      <div className="rounded-2xl bg-[#C8A46A]/10 border border-[#C8A46A]/20 p-3 text-[#C8A46A] shadow-[0_12px_24px_rgba(0,0,0,0.08)]">
+        <item.icon size={18} />
+      </div>
+    </div>
+  </div>
+
+  <div className="p-5 bg-[#F9F7F2]/95 rounded-b-[30px]">
+    <h3 className="font-heading text-xl text-[#111827] leading-snug mb-3">
+      {item.title}
+    </h3>
+
+    <p className="text-[#475569] text-sm leading-relaxed mb-6">
+      {item.desc}
+    </p>
+  </div>
+</motion.button>
               ))}
             </div>
           </AnimatedSection>

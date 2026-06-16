@@ -59,7 +59,7 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-24 lg:py-32 bg-[#070B14] relative overflow-hidden">
+    <section className="py-24 lg:py-32 bg-[#F9F7F2] relative overflow-hidden">
       {/* Background accents */}
       <div className="absolute top-0 right-0 w-[600px] h-[500px] rounded-full bg-[#C8A46A]/5 blur-[160px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[#4a3a6e]/8 blur-[140px] pointer-events-none" />
@@ -72,20 +72,20 @@ export default function WhyChooseUs() {
             <span className="text-[#C8A46A] text-[11px] font-bold tracking-[0.2em] uppercase">Our Difference</span>
           </div>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <h2 className="font-heading text-5xl lg:text-6xl text-[#F5F1EA] leading-tight">
+            <h2 className="font-heading text-5xl lg:text-6xl text-[#111827] leading-tight">
               Why Choose<br />Ginny &amp; Co.
             </h2>
-            <p className="text-[#A7B0C0] text-lg max-w-sm leading-relaxed">
+            <p className="text-[#475569] text-lg max-w-sm leading-relaxed">
               What sets us apart is not just what we do, but how we do it — every step of the way.
             </p>
           </div>
         </AnimatedSection>
 
         {/* Feature grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.04] rounded-3xl overflow-hidden border border-white/[0.06]">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-black/[0.04] rounded-3xl overflow-hidden border border-black/[0.06]">
           {features.map((feature, i) => (
             <AnimatedSection key={feature.title} delay={0.06 * i}>
-              <div className="group relative bg-[#070B14] p-8 lg:p-10 hover:bg-[#0D1525] transition-colors duration-300 cursor-default h-full overflow-hidden">
+              <div className="group relative bg-[#F9F7F2] p-8 lg:p-10 hover:bg-[#F4EFE7] transition-colors duration-300 cursor-default h-full overflow-hidden">
                 {/* Hover glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#C8A46A]/0 to-[#C8A46A]/0 group-hover:from-[#C8A46A]/4 group-hover:to-transparent transition-all duration-500" />
 
@@ -98,8 +98,8 @@ export default function WhyChooseUs() {
                   <div className="w-12 h-12 rounded-2xl bg-[#C8A46A]/8 border border-[#C8A46A]/15 flex items-center justify-center mb-6 group-hover:bg-[#C8A46A]/15 group-hover:border-[#C8A46A]/30 transition-all duration-300">
                     <feature.icon size={20} className="text-[#C8A46A]" />
                   </div>
-                  <h3 className="font-heading text-xl text-[#F5F1EA] mb-3">{feature.title}</h3>
-                  <p className="text-[#A7B0C0] text-sm leading-relaxed">{feature.desc}</p>
+                  <h3 className="font-heading text-xl text-[#111827] mb-3">{feature.title}</h3>
+                  <p className="text-[#475569] text-sm leading-relaxed">{feature.desc}</p>
                 </div>
               </div>
             </AnimatedSection>

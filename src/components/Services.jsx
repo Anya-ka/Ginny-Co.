@@ -21,40 +21,36 @@ function AnimatedSection({ children, className = '', delay = 0 }) {
 function ServiceCard({ icon: Icon, name, desc, image, highlight, delay }) {
   return (
     <AnimatedSection delay={delay}>
-      <div className="group relative overflow-hidden rounded-[34px] border border-white/20 bg-[#0B1220]/95 shadow-[0_28px_70px_rgba(0,0,0,0.24),0_0_20px_rgba(255,255,255,0.05)] transition-all duration-500 hover:-translate-y-3 hover:scale-[1.01] hover:border-white/30 hover:shadow-[0_30px_90px_rgba(0,0,0,0.32),0_0_45px_rgba(255,255,255,0.08)]">
-        <div className="absolute inset-0 bg-white/10 blur-[30px] opacity-0 transition-opacity duration-500 group-hover:opacity-80 pointer-events-none" />
-        <div className="relative h-64 overflow-hidden rounded-t-[34px] border-b border-white/[0.08]">
+      <div className="group relative overflow-hidden rounded-[34px] border border-white/20 bg-[#0B1220]/95 shadow-[0_28px_70px_rgba(0,0,0,0.6),0_0_60px_rgba(200,164,106,0.1)] transition-all duration-500 hover:-translate-y-3 hover:scale-[1.01] hover:border-white/40 hover:shadow-[0_30px_100px_rgba(0,0,0,0.8),0_0_80px_rgba(200,164,106,0.2)]">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#C8A46A]/10 via-transparent to-[#0B1220]/20 blur-[40px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
+        <div className="relative h-64 overflow-hidden rounded-t-[34px] border-b border-white/10">
           <img
             src={image}
             alt={name}
-            className="absolute inset-0 h-full w-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-105 group-hover:brightness-110"
+            className="absolute inset-0 h-full w-full object-cover object-center transition-all duration-700 ease-out brightness-110 group-hover:scale-105 group-hover:brightness-130"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220]/80 via-[#0B1220]/25 to-transparent" />
-          <div className="absolute inset-x-6 top-6 h-1 rounded-full bg-white/30 opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220]/50 via-[#0B1220]/15 to-transparent" />
+          <div className="absolute inset-x-6 top-6 h-1 rounded-full bg-white/20 opacity-60" />
           <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between gap-4">
-            <div className="rounded-2xl bg-[#0B1220]/70 border border-white/[0.12] px-3 py-2 backdrop-blur-sm shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+            <div className="rounded-2xl bg-[#0B1220]/60 border border-[#C8A46A]/40 px-3 py-2 backdrop-blur-sm shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
               <Icon size={18} className="text-[#C8A46A]" />
             </div>
-            <span className="rounded-full border border-white/[0.16] bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-[#F5F1EA] shadow-[0_10px_30px_rgba(0,0,0,0.12)]">
+            <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-[#F5F1EA] shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
               {highlight}
             </span>
           </div>
         </div>
-        <div className="p-6 border border-white/[0.08] rounded-b-[34px] bg-[#121B2A]/90">
-          <h4 className="font-heading text-2xl text-[#F8F3E5] mb-4 tracking-tight">{name}</h4>
-          <p className="text-[#E6EAEF] text-sm leading-relaxed mb-5">{desc}</p>
+        <div className="p-6 border border-white/10 rounded-b-[34px] bg-[#0B1220]/80">
+          <h4 className="font-heading text-2xl text-[#F5F1EA] mb-4 tracking-tight">{name}</h4>
+          <p className="text-[#BFDBFE] text-sm leading-relaxed mb-5">{desc}</p>
           <ul className="space-y-3">
             {serviceHighlights[name]?.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-[#E9EDF4] text-sm leading-relaxed">
-                <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#F3E3AE] shadow-[0_0_10px_rgba(243,227,174,0.4)] flex-shrink-0" />
+              <li key={item} className="flex items-start gap-3 text-[#BFDBFE] text-sm leading-relaxed">
+                <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#C8A46A] shadow-[0_0_10px_rgba(200,164,106,0.6)] flex-shrink-0" />
                 <span>{item}</span>
               </li>
             ))}
           </ul>
-          <div className="mt-6 flex items-center gap-2 text-[#F3E3AE] text-sm font-semibold tracking-wide">
-            <span>Discover more</span>
-            <ArrowRight size={13} />
-          </div>
         </div>
       </div>
     </AnimatedSection>
@@ -105,7 +101,7 @@ const serviceCategories = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 lg:py-32 bg-[#121B2A] relative overflow-hidden">
+    <section id="services" className="py-24 lg:py-32 bg-[#FFFFFF] relative overflow-hidden">
       <div className="absolute top-0 left-0 w-[520px] h-[520px] rounded-full bg-[#C8A46A]/6 blur-[160px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[420px] h-[420px] rounded-full bg-[#4a3a6e]/10 blur-[140px] pointer-events-none" />
 
@@ -118,17 +114,17 @@ export default function Services() {
 
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div>
-              <h2 className="font-heading text-5xl lg:text-6xl text-[#F5F1EA] leading-tight mb-4">
+              <h2 className="font-heading text-5xl md:text-6xl lg:text-[68px] text-[#111827] leading-tight mb-4">
                 Our Services
               </h2>
-              <p className="text-[#A7B0C0] text-lg max-w-xl leading-relaxed">
+              <p className="text-[#475569] text-lg max-w-xl leading-relaxed">
                 Comprehensive financial and compliance services, built for modern businesses at every stage of growth.
               </p>
             </div>
             <a
               href="#contact"
               onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
-              className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 border border-[#C8A46A]/40 text-[#C8A46A] font-semibold rounded-full hover:bg-[#C8A46A] hover:text-[#0B1220] transition-all duration-300 text-sm"
+              className="shrink-0 inline-flex items-center gap-2 px-8 py-3.5 bg-[#C8A46A] text-[#111827] font-bold rounded-full hover:bg-[#d9b87a] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_24px_rgba(200,164,106,0.25)] text-sm"
             >
               Get a Consultation
               <ArrowRight size={15} />

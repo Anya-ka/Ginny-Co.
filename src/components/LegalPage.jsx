@@ -124,7 +124,7 @@ export default function LegalPage({ pageKey }) {
   };
 
   return (
-    <main className="relative overflow-hidden bg-[#0B1220] pt-36 pb-24 lg:pt-40 lg:pb-32">
+    <main className="relative overflow-hidden bg-[#F9F7F2] pt-36 pb-24 lg:pt-40 lg:pb-32">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_18%,rgba(200,164,106,0.14),transparent_28%),radial-gradient(circle_at_82%_10%,rgba(255,255,255,0.07),transparent_22%)] pointer-events-none" />
       <div className="absolute inset-0 opacity-[0.045] bg-[linear-gradient(rgba(255,255,255,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.8)_1px,transparent_1px)] bg-[size:78px_78px] pointer-events-none" />
 
@@ -132,7 +132,7 @@ export default function LegalPage({ pageKey }) {
         <a
           href="#hero"
           onClick={goHome}
-          className="mb-10 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-[#121B2A]/80 px-5 py-2.5 text-sm font-semibold text-[#D7DEE8] transition-all duration-300 hover:border-[#C8A46A]/35 hover:text-[#E2C17E]"
+          className="mb-10 inline-flex items-center gap-2 rounded-full border border-black/[0.1] bg-[#FFFFFF]/80 px-5 py-2.5 text-sm font-semibold text-[#475569] transition-all duration-300 hover:border-[#C8A46A]/35 hover:text-[#E2C17E]"
         >
           <ArrowLeft size={16} />
           Back to Home
@@ -143,28 +143,28 @@ export default function LegalPage({ pageKey }) {
             <Circle size={9} className="text-[#C8A46A]" strokeWidth={3} />
             <span className="text-[#E2C17E] text-[11px] font-bold tracking-[0.2em] uppercase">{page.eyebrow}</span>
           </div>
-          <h1 className="font-heading text-5xl lg:text-7xl leading-tight text-[#FFF8E8] drop-shadow-[0_16px_34px_rgba(0,0,0,0.24)]">
+          <h1 className="font-heading text-5xl lg:text-7xl leading-tight text-[#111827] drop-shadow-[0_16px_34px_rgba(0,0,0,0.24)]">
             {page.title}
           </h1>
-          <p className="mt-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#A7B0C0]">{page.updated}</p>
-          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-[#D7DEE8]">{page.intro}</p>
+          <p className="mt-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#475569]">{page.updated}</p>
+          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-[#475569]">{page.intro}</p>
         </div>
 
-        <div className="overflow-hidden rounded-[34px] border border-white/[0.08] bg-[#121B2A]/88 shadow-[0_30px_90px_rgba(0,0,0,0.32)]">
+        <div className="overflow-hidden rounded-[34px] border border-black/[0.08] bg-[#FFFFFF]/88 shadow-[0_30px_90px_rgba(0,0,0,0.32)]">
           {page.sections.map((section, index) => (
-            <section key={section.title} className="border-b border-white/[0.06] p-6 md:p-8 last:border-0">
+            <section key={section.title} className="border-b border-black/[0.06] p-6 md:p-8 last:border-0">
               <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[#C8A46A]/80">
                 {String(index + 1).padStart(2, '0')}
               </div>
-              <h2 className="font-heading text-2xl text-[#FFF8E8]">{section.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-[#A7B0C0]">{section.body}</p>
+              <h2 className="font-heading text-2xl text-[#111827]">{section.title}</h2>
+              <p className="mt-3 text-sm leading-relaxed text-[#475569]">{section.body}</p>
             </section>
           ))}
         </div>
 
         <div className="mt-10 rounded-[28px] border border-[#C8A46A]/18 bg-[#C8A46A]/8 p-6">
-          <h2 className="font-heading text-2xl text-[#FFF8E8]">Contact</h2>
-          <p className="mt-2 text-sm leading-relaxed text-[#D7DEE8]">
+          <h2 className="font-heading text-2xl text-[#111827]">Contact</h2>
+          <p className="mt-2 text-sm leading-relaxed text-[#475569]">
             For questions about these terms or your information, contact us at{' '}
             <a href="mailto:hello@ginnyandco.in" className="font-semibold text-[#E2C17E] hover:text-[#F3DDA6]">
               hello@ginnyandco.in
