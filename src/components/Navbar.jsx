@@ -24,7 +24,11 @@ export default function Navbar() {
     e.preventDefault();
     setMenuOpen(false);
     const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    window.location.hash = href;
   };
 
   return (

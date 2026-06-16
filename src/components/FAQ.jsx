@@ -50,13 +50,13 @@ function FAQItem({ q, a, index }) {
 
   return (
     <AnimatedSection delay={0.05 * index}>
-      <div className={`border border-white/[0.06] rounded-2xl overflow-hidden transition-all duration-300 ${open ? 'border-[#C8A46A]/30 shadow-[0_4px_24px_rgba(200,164,106,0.07)]' : 'hover:border-white/[0.12]'}`}>
+      <div className={`border rounded-[26px] overflow-hidden transition-all duration-300 ${open ? 'border-[#C8A46A]/35 bg-[#121B2A]/95 shadow-[0_18px_48px_rgba(0,0,0,0.22),0_0_28px_rgba(200,164,106,0.08)]' : 'border-white/[0.07] bg-[#121B2A]/65 hover:border-white/[0.14] hover:bg-[#121B2A]/85'}`}>
         <button
           onClick={() => setOpen(!open)}
-          className="w-full flex items-center justify-between px-7 py-6 text-left group"
+          className="w-full flex items-center justify-between px-6 md:px-7 py-6 text-left group"
           aria-expanded={open}
         >
-          <span className={`text-base font-medium pr-8 transition-colors duration-200 leading-snug ${open ? 'text-[#C8A46A]' : 'text-[#F5F1EA] group-hover:text-[#C8A46A]'}`}>
+          <span className={`text-base md:text-lg font-semibold pr-6 transition-colors duration-200 leading-snug ${open ? 'text-[#E2C17E]' : 'text-[#FFF8E8] group-hover:text-[#E2C17E]'}`}>
             {q}
           </span>
           <span className={`shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-200 ${
@@ -77,7 +77,7 @@ function FAQItem({ q, a, index }) {
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden"
             >
-              <p className="text-[#A7B0C0] text-sm leading-relaxed px-7 pb-7 pr-16">
+              <p className="text-[#D7DEE8] text-sm leading-relaxed px-6 md:px-7 pb-7 md:pr-16">
                 {a}
               </p>
             </motion.div>
@@ -90,11 +90,13 @@ function FAQItem({ q, a, index }) {
 
 export default function FAQ() {
   return (
-    <section className="py-24 lg:py-32 bg-[#0B1220] relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#C8A46A]/4 rounded-full blur-[160px] pointer-events-none" />
+    <section id="faq" className="py-24 lg:py-32 bg-[#0B1220] relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(200,164,106,0.12),transparent_28%),radial-gradient(circle_at_82%_16%,rgba(255,255,255,0.07),transparent_24%)] pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.045] bg-[linear-gradient(rgba(255,255,255,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.8)_1px,transparent_1px)] bg-[size:76px_76px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[360px] bg-[#C8A46A]/6 rounded-full blur-[170px] pointer-events-none" />
 
       <div className="max-w-[1240px] mx-auto px-6 relative">
-        <div className="grid lg:grid-cols-[380px_1fr] gap-16 lg:gap-24">
+        <div className="grid lg:grid-cols-[410px_1fr] gap-12 lg:gap-20">
 
           {/* Left sticky panel */}
           <AnimatedSection className="lg:sticky lg:top-28 self-start">
@@ -102,19 +104,19 @@ export default function FAQ() {
               <Circle size={9} className="text-[#C8A46A]" strokeWidth={3} />
               <span className="text-[#C8A46A] text-[11px] font-bold tracking-[0.2em] uppercase">FAQs</span>
             </div>
-            <h2 className="font-heading text-5xl lg:text-6xl text-[#F5F1EA] leading-tight mb-6">
+            <h2 className="font-heading text-5xl lg:text-7xl text-[#FFF8E8] leading-tight mb-6 drop-shadow-[0_16px_34px_rgba(0,0,0,0.22)]">
               Common Questions
             </h2>
-            <p className="text-[#A7B0C0] text-base leading-relaxed mb-10">
+            <p className="text-[#D7DEE8] text-base leading-relaxed mb-10">
               Can't find your answer here? Reach out and we'll respond within one business day.
             </p>
 
             {/* Contact prompt card */}
-            <div className="bg-[#121B2A] border border-white/[0.07] rounded-2xl p-6">
-              <div className="w-10 h-10 rounded-xl bg-[#C8A46A]/10 border border-[#C8A46A]/20 flex items-center justify-center mb-4">
+            <div className="bg-[#121B2A]/90 border border-white/[0.08] rounded-[30px] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.26)]">
+              <div className="w-12 h-12 rounded-2xl bg-[#C8A46A]/10 border border-[#C8A46A]/20 flex items-center justify-center mb-4">
                 <MessageSquare size={16} className="text-[#C8A46A]" />
               </div>
-              <h4 className="font-heading text-xl text-[#F5F1EA] mb-2">Still have questions?</h4>
+              <h4 className="font-heading text-2xl text-[#FFF8E8] mb-2">Still have questions?</h4>
               <p className="text-[#A7B0C0] text-sm leading-relaxed mb-5">Our team is happy to walk you through anything specific to your situation.</p>
               <a
                 href="#contact"

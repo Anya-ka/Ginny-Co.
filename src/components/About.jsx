@@ -115,18 +115,18 @@ export default function About() {
           </AnimatedSection>
 
           {/* ── Right Column: Video Placeholder ── */}
-          <AnimatedSection delay={0.2} className="relative lg:sticky lg:top-28">
+          <AnimatedSection delay={0.2} className="relative lg:sticky lg:top-24">
             {/* Decorative offset frames */}
             <div className="absolute -top-5 -right-5 w-full h-full border border-white/[0.05] rounded-tl-[72px] rounded-br-[72px] rounded-tr-2xl rounded-bl-2xl pointer-events-none" />
             <div className="absolute -top-10 -right-10 w-full h-full border border-white/[0.025] rounded-tl-[72px] rounded-br-[72px] rounded-tr-2xl rounded-bl-2xl pointer-events-none" />
 
-            <div className="relative aspect-[4/5] w-full rounded-tl-[72px] rounded-br-[72px] rounded-tr-2xl rounded-bl-2xl overflow-hidden bg-[#121B2A] shadow-[0_30px_80px_rgba(0,0,0,0.5)] group cursor-pointer border border-white/[0.07]">
+            <div className="relative aspect-[10/12] w-full rounded-tl-[72px] rounded-br-[72px] rounded-tr-2xl rounded-bl-2xl overflow-hidden bg-[#121B2A] shadow-[0_30px_80px_rgba(0,0,0,0.5)] group cursor-pointer border border-white/[0.07]">
               <img
-                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80"
-                alt="Ginny & Co. office"
-                className="w-full h-full object-cover opacity-45 group-hover:opacity-35 transition-all duration-700 group-hover:scale-105"
+                src="https://images.unsplash.com/photo-1522199710521-72d69614c702?w=1200&q=80"
+                alt="Team collaborating in office"
+                className="w-full h-full object-cover opacity-55 group-hover:opacity-40 transition-all duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220]/95 via-[#0B1220]/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220]/90 via-[#0B1220]/30 to-transparent" />
 
               {/* Play button */}
               <div className="absolute inset-0 flex items-center justify-center">

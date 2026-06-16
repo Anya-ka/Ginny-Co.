@@ -1,9 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import {
-  FileText, Calculator, ShieldCheck, ClipboardList,
-  Receipt, Building2, Search, BarChart3, Scale, FileCog, FileCheck, Landmark, Circle, ArrowRight,
-} from 'lucide-react';
+import { Calculator, ShieldCheck, Receipt, Search, Circle, ArrowRight } from 'lucide-react';
 
 function AnimatedSection({ children, className = '', delay = 0 }) {
   const ref = useRef(null);
@@ -21,89 +18,99 @@ function AnimatedSection({ children, className = '', delay = 0 }) {
   );
 }
 
-const serviceCategories = [
-  {
-    id: 'taxation',
-    label: 'Taxation',
-    icon: Calculator,
-    description: 'End-to-end tax solutions for businesses and individuals.',
-    color: 'from-[#C8A46A]/20 to-[#C8A46A]/5',
-    services: [
-      { icon: FileText, name: 'Income Tax', desc: 'Filing, assessment, and planning for individuals & corporates.' },
-      { icon: BarChart3, name: 'Tax Planning', desc: 'Strategic tax structuring to optimise your tax burden legally.' },
-      { icon: Scale, name: 'Tax Advisory', desc: 'Expert guidance on tax implications for transactions and decisions.' },
-    ],
-  },
-  {
-    id: 'gst',
-    label: 'GST',
-    icon: Receipt,
-    description: 'Complete GST lifecycle management from registration to compliance.',
-    color: 'from-[#5B8FCC]/20 to-[#5B8FCC]/5',
-    services: [
-      { icon: ClipboardList, name: 'GST Registration', desc: 'Seamless registration across all categories and business types.' },
-      { icon: FileCog, name: 'GST Filing', desc: 'Timely and accurate filing of GSTR-1, GSTR-3B, and annual returns.' },
-      { icon: ShieldCheck, name: 'GST Compliance', desc: 'Ongoing advisory to maintain error-free GST compliance.' },
-    ],
-  },
-  {
-    id: 'audit',
-    label: 'Audit',
-    icon: Search,
-    description: 'Independent and thorough audit services for credibility and control.',
-    color: 'from-[#7E69AB]/20 to-[#7E69AB]/5',
-    services: [
-      { icon: Building2, name: 'Statutory Audit', desc: 'Mandatory audits conducted with rigour under the Companies Act.' },
-      { icon: FileCheck, name: 'Internal Audit', desc: 'Process audits to strengthen internal controls and risk management.' },
-      { icon: Landmark, name: 'Tax Audit', desc: 'Section 44AB tax audits completed accurately and on time.' },
-    ],
-  },
-  {
-    id: 'compliance',
-    label: 'Compliance',
-    icon: ShieldCheck,
-    description: 'Stay ahead of regulatory requirements with our compliance support.',
-    color: 'from-[#4A8C6E]/20 to-[#4A8C6E]/5',
-    services: [
-      { icon: Scale, name: 'Regulatory Compliance', desc: 'FEMA, RBI, and sector-specific regulatory compliance support.' },
-      { icon: Building2, name: 'Corporate Filings', desc: 'ROC filings, annual returns, and MCA compliance management.' },
-      { icon: FileText, name: 'Business Compliance', desc: 'Comprehensive compliance calendar management for your business.' },
-    ],
-  },
-];
-
-function ServiceCard({ icon: Icon, name, desc, delay }) {
+function ServiceCard({ icon: Icon, name, desc, image, highlight, delay }) {
   return (
     <AnimatedSection delay={delay}>
-      <div className="group relative p-6 bg-[#0B1220] border border-white/[0.06] rounded-2xl hover:border-[#C8A46A]/30 hover:shadow-[0_8px_40px_rgba(200,164,106,0.08)] hover:-translate-y-1.5 transition-all duration-300 cursor-default overflow-hidden">
-        {/* Subtle corner glow on hover */}
-        <div className="absolute top-0 right-0 w-20 h-20 bg-[#C8A46A]/0 group-hover:bg-[#C8A46A]/5 rounded-full blur-2xl transition-all duration-500 -translate-y-1/2 translate-x-1/2" />
-        <div className="w-11 h-11 rounded-xl bg-[#C8A46A]/8 border border-[#C8A46A]/15 flex items-center justify-center mb-5 group-hover:bg-[#C8A46A]/15 group-hover:border-[#C8A46A]/30 transition-all duration-300">
-          <Icon size={18} className="text-[#C8A46A]" />
+      <div className="group relative overflow-hidden rounded-[34px] border border-white/20 bg-[#0B1220]/95 shadow-[0_28px_70px_rgba(0,0,0,0.24),0_0_20px_rgba(255,255,255,0.05)] transition-all duration-500 hover:-translate-y-3 hover:scale-[1.01] hover:border-white/30 hover:shadow-[0_30px_90px_rgba(0,0,0,0.32),0_0_45px_rgba(255,255,255,0.08)]">
+        <div className="absolute inset-0 bg-white/10 blur-[30px] opacity-0 transition-opacity duration-500 group-hover:opacity-80 pointer-events-none" />
+        <div className="relative h-64 overflow-hidden rounded-t-[34px] border-b border-white/[0.08]">
+          <img
+            src={image}
+            alt={name}
+            className="absolute inset-0 h-full w-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-105 group-hover:brightness-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220]/80 via-[#0B1220]/25 to-transparent" />
+          <div className="absolute inset-x-6 top-6 h-1 rounded-full bg-white/30 opacity-60" />
+          <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between gap-4">
+            <div className="rounded-2xl bg-[#0B1220]/70 border border-white/[0.12] px-3 py-2 backdrop-blur-sm shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+              <Icon size={18} className="text-[#C8A46A]" />
+            </div>
+            <span className="rounded-full border border-white/[0.16] bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-[#F5F1EA] shadow-[0_10px_30px_rgba(0,0,0,0.12)]">
+              {highlight}
+            </span>
+          </div>
         </div>
-        <h4 className="text-[#F5F1EA] font-semibold text-base mb-2">{name}</h4>
-        <p className="text-[#A7B0C0] text-sm leading-relaxed">{desc}</p>
-        <div className="mt-4 flex items-center gap-1 text-[#C8A46A]/0 group-hover:text-[#C8A46A]/80 text-xs font-semibold tracking-wide transition-all duration-300">
-          <span>Learn more</span>
-          <ArrowRight size={12} />
+        <div className="p-6 border border-white/[0.08] rounded-b-[34px] bg-[#121B2A]/90">
+          <h4 className="font-heading text-2xl text-[#F8F3E5] mb-4 tracking-tight">{name}</h4>
+          <p className="text-[#E6EAEF] text-sm leading-relaxed mb-5">{desc}</p>
+          <ul className="space-y-3">
+            {serviceHighlights[name]?.map((item) => (
+              <li key={item} className="flex items-start gap-3 text-[#E9EDF4] text-sm leading-relaxed">
+                <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#F3E3AE] shadow-[0_0_10px_rgba(243,227,174,0.4)] flex-shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-6 flex items-center gap-2 text-[#F3E3AE] text-sm font-semibold tracking-wide">
+            <span>Discover more</span>
+            <ArrowRight size={13} />
+          </div>
         </div>
       </div>
     </AnimatedSection>
   );
 }
 
+const serviceHighlights = {
+  Taxation: ['Income Tax filing & advisory', 'Tax planning for growth', 'Corporate & individual support'],
+  GST: ['Registration & onboarding', 'GSTR filing accuracy', 'Compliance monitoring'],
+  Audit: ['Statutory audit assurance', 'Internal control reviews', 'Tax audit readiness'],
+  Compliance: ['Regulatory filings', 'ROC and MCA support', 'Ongoing compliance calendar'],
+};
+
+const serviceCategories = [
+  {
+    id: 'taxation',
+    label: 'Taxation',
+    icon: Calculator,
+    description: 'End-to-end tax solutions for businesses and individuals.',
+    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80',
+    highlight: 'Tax Strategy',
+  },
+  {
+    id: 'gst',
+    label: 'GST',
+    icon: Receipt,
+    description: 'Complete GST lifecycle management from registration to compliance.',
+    image: 'https://images.unsplash.com/photo-1485217988980-11786ced9454?w=1200&q=80',
+    highlight: 'Compliance First',
+  },
+  {
+    id: 'audit',
+    label: 'Audit',
+    icon: Search,
+    description: 'Independent and thorough audit services for credibility and control.',
+    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&q=80',
+    highlight: 'Trusted Assurance',
+  },
+  {
+    id: 'compliance',
+    label: 'Compliance',
+    icon: ShieldCheck,
+    description: 'Stay ahead of regulatory requirements with our compliance support.',
+    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80',
+    highlight: 'Risk Management',
+  },
+];
+
 export default function Services() {
   return (
     <section id="services" className="py-24 lg:py-32 bg-[#121B2A] relative overflow-hidden">
-      {/* Background accents */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-[#C8A46A]/4 blur-[160px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-[#4a3a6e]/10 blur-[140px] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[520px] h-[520px] rounded-full bg-[#C8A46A]/6 blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[420px] h-[420px] rounded-full bg-[#4a3a6e]/10 blur-[140px] pointer-events-none" />
 
       <div className="max-w-[1240px] mx-auto px-6 relative">
-
-        {/* Section header */}
         <AnimatedSection className="mb-20">
-          {/* Eyebrow — matching the About Us element the user referenced */}
           <div className="flex items-center gap-3 mb-6">
             <Circle size={9} className="text-[#C8A46A]" strokeWidth={3} />
             <span className="text-[#C8A46A] text-[11px] font-bold tracking-[0.2em] uppercase">What We Do</span>
@@ -129,40 +136,48 @@ export default function Services() {
           </div>
         </AnimatedSection>
 
-        {/* Service categories */}
-        <div className="space-y-20">
-          {serviceCategories.map((category, ci) => (
-            <AnimatedSection key={category.id} delay={0.05}>
-              <div className={`relative rounded-3xl overflow-hidden border border-white/[0.05] bg-gradient-to-br ${category.color} p-8 lg:p-10`}>
-                {/* Category label strip */}
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-[#121B2A]/80 border border-white/[0.08] flex items-center justify-center">
-                      <category.icon size={20} className="text-[#C8A46A]" />
-                    </div>
-                    <div>
-                      <h3 className="font-heading text-2xl text-[#F5F1EA]">{category.label}</h3>
-                      <p className="text-[#A7B0C0] text-sm">{category.description}</p>
-                    </div>
-                  </div>
-                  <span className="shrink-0 text-[10px] font-bold tracking-widest text-[#C8A46A] uppercase border border-[#C8A46A]/25 rounded-full px-4 py-1.5">
-                    {category.services.length} Services
-                  </span>
-                </div>
+        <div className="grid gap-8 lg:grid-cols-[0.98fr_1.02fr]">
+          <div className="grid gap-8">
+            <ServiceCard
+              key={serviceCategories[2].id}
+              icon={serviceCategories[2].icon}
+              name={serviceCategories[2].label}
+              desc={serviceCategories[2].description}
+              image={serviceCategories[2].image}
+              highlight={serviceCategories[2].highlight}
+              delay={0.08 * 2}
+            />
+            <ServiceCard
+              key={serviceCategories[0].id}
+              icon={serviceCategories[0].icon}
+              name={serviceCategories[0].label}
+              desc={serviceCategories[0].description}
+              image={serviceCategories[0].image}
+              highlight={serviceCategories[0].highlight}
+              delay={0.08 * 0}
+            />
+          </div>
 
-                {/* Service cards */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {category.services.map((service, si) => (
-                    <ServiceCard
-                      key={service.name}
-                      {...service}
-                      delay={0.06 * si}
-                    />
-                  ))}
-                </div>
-              </div>
-            </AnimatedSection>
-          ))}
+          <div className="grid gap-8">
+            <ServiceCard
+              key={serviceCategories[1].id}
+              icon={serviceCategories[1].icon}
+              name={serviceCategories[1].label}
+              desc={serviceCategories[1].description}
+              image={serviceCategories[1].image}
+              highlight={serviceCategories[1].highlight}
+              delay={0.08 * 1}
+            />
+            <ServiceCard
+              key={serviceCategories[3].id}
+              icon={serviceCategories[3].icon}
+              name={serviceCategories[3].label}
+              desc={serviceCategories[3].description}
+              image={serviceCategories[3].image}
+              highlight={serviceCategories[3].highlight}
+              delay={0.08 * 3}
+            />
+          </div>
         </div>
       </div>
     </section>
