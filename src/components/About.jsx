@@ -1,17 +1,17 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Play, Users, Briefcase, Award, TrendingUp } from 'lucide-react';
+import { Play, Circle, Shield, Target, Handshake } from 'lucide-react';
 
 function AnimatedSection({ children, className = '', delay = 0 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
+
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, ease: 'easeOut', delay }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay }}
       className={className}
     >
       {children}
@@ -19,110 +19,141 @@ function AnimatedSection({ children, className = '', delay = 0 }) {
   );
 }
 
-const stats = [
-  { icon: Users, num: '500+', label: 'Clients Served', desc: 'Across India' },
-  { icon: Briefcase, num: '20+', label: 'Industries', desc: 'Diversified expertise' },
-  { icon: Award, num: '15+', label: 'Years Experience', desc: 'Deep domain knowledge' },
-  { icon: TrendingUp, num: '98%', label: 'Client Retention', desc: 'Long-term partnerships' },
+const pillars = [
+  {
+    icon: Target,
+    title: 'Our Mission',
+    desc: 'Deliver precise, proactive financial guidance that empowers businesses to grow with confidence and clarity.',
+  },
+  {
+    icon: Shield,
+    title: 'Our Vision',
+    desc: 'Be the most trusted advisory partner for Indian businesses — from early-stage startup to established enterprise.',
+  },
+  {
+    icon: Handshake,
+    title: 'Our Values',
+    desc: 'Integrity, precision, and long-term partnerships built on transparency and genuine client success.',
+  },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="py-32 bg-[#0B1220] relative overflow-hidden">
-      {/* Soft ambient glow top-right */}
-      <div className="absolute top-0 right-0 w-[500px] h-[400px] rounded-full bg-[#4a3a6e]/10 blur-[130px] pointer-events-none" />
-      <div className="max-w-[1240px] mx-auto px-6 relative">
-        {/* Header */}
-        <AnimatedSection className="text-center mb-20">
-          <h2 className="font-playfair text-4xl lg:text-5xl text-[#F5F1EA] mt-2">
-            About Ginny &amp; Co.
-          </h2>
-        </AnimatedSection>
+    <section id="about" className="relative overflow-hidden bg-[#0B1220] py-24 lg:py-32">
 
-        {/* Two column layout */}
-        <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
-          {/* Left — Video placeholder */}
-          <AnimatedSection delay={0.1}>
-            <div className="relative aspect-video bg-[#121B2A] rounded-[var(--radius-2xl)] overflow-hidden group cursor-pointer border border-white/7">
+      {/* Textured Background Image */}
+      <div
+        className="absolute inset-0 pointer-events-none -z-20"
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2000')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          opacity: 0.07,
+        }}
+      />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0D1828]/95 via-[#0B1220]/90 to-[#0B1220]/95 pointer-events-none -z-10" />
+      {/* Gold ambient glow top-right */}
+      <div className="absolute -top-20 right-0 w-[700px] h-[500px] bg-[#C8A46A]/8 rounded-full blur-[160px] pointer-events-none -z-10" />
+
+      <div className="mx-auto max-w-[1240px] px-6">
+
+        {/* Top two-column layout */}
+        <div className="grid lg:grid-cols-[1fr_1.05fr] gap-12 lg:gap-20 items-start">
+
+          {/* ── Left Column ── */}
+          <AnimatedSection className="flex flex-col">
+            <div className="flex items-center gap-3 mb-7">
+              <Circle size={9} className="text-[#C8A46A]" strokeWidth={3} />
+              <span className="text-[#C8A46A] text-[11px] font-bold tracking-[0.2em] uppercase">Who We Are</span>
+            </div>
+
+            <h2 className="font-heading text-5xl md:text-6xl lg:text-[68px] text-[#F5F1EA] leading-[1.04] tracking-tight mb-7">
+              About Ginny &amp; Co.
+            </h2>
+
+            <p className="text-[#A7B0C0] text-base md:text-lg leading-relaxed mb-5">
+              Founded with a commitment to clarity and integrity, Ginny &amp; Co. is a boutique chartered accountancy firm that helps businesses navigate taxation, audit, compliance, and advisory with confidence.
+            </p>
+            <p className="text-[#A7B0C0] text-base md:text-lg leading-relaxed mb-10">
+              We combine deep technical expertise with practical business insight, working as an extension of your team—not just as advisors—to deliver outcomes that genuinely matter.
+            </p>
+
+            {/* Pillar Cards */}
+            <div className="flex flex-col gap-4">
+              {pillars.map((p, i) => (
+                <AnimatedSection key={p.title} delay={0.1 + i * 0.08}>
+                  <div className="flex items-start gap-4 p-5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-[#C8A46A]/25 transition-colors duration-300">
+                    <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-[#C8A46A]/10 flex items-center justify-center mt-0.5">
+                      <p.icon size={17} className="text-[#C8A46A]" />
+                    </div>
+                    <div>
+                      <h4 className="text-[#F5F1EA] font-semibold mb-1 tracking-wide">{p.title}</h4>
+                      <p className="text-[#A7B0C0] text-sm leading-relaxed">{p.desc}</p>
+                    </div>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-10 flex items-center gap-6">
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center px-8 py-3.5 bg-[#C8A46A] text-[#0B1220] font-bold rounded-full hover:bg-[#d9b87a] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_24px_rgba(200,164,106,0.25)]"
+              >
+                Let's Talk
+              </a>
+              <a
+                href="#services"
+                className="text-sm font-semibold tracking-wide text-[#F5F1EA] uppercase hover:text-[#C8A46A] transition-colors duration-300 underline underline-offset-4 decoration-white/20 hover:decoration-[#C8A46A]/40"
+              >
+                Explore Services
+              </a>
+            </div>
+          </AnimatedSection>
+
+          {/* ── Right Column: Video Placeholder ── */}
+          <AnimatedSection delay={0.2} className="relative lg:sticky lg:top-28">
+            {/* Decorative offset frames */}
+            <div className="absolute -top-5 -right-5 w-full h-full border border-white/[0.05] rounded-tl-[72px] rounded-br-[72px] rounded-tr-2xl rounded-bl-2xl pointer-events-none" />
+            <div className="absolute -top-10 -right-10 w-full h-full border border-white/[0.025] rounded-tl-[72px] rounded-br-[72px] rounded-tr-2xl rounded-bl-2xl pointer-events-none" />
+
+            <div className="relative aspect-[4/5] w-full rounded-tl-[72px] rounded-br-[72px] rounded-tr-2xl rounded-bl-2xl overflow-hidden bg-[#121B2A] shadow-[0_30px_80px_rgba(0,0,0,0.5)] group cursor-pointer border border-white/[0.07]">
               <img
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80"
-                alt="Ginny & Co. founding team"
-                className="w-full h-full object-cover opacity-65 group-hover:opacity-75 transition-opacity duration-300"
+                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80"
+                alt="Ginny & Co. office"
+                className="w-full h-full object-cover opacity-45 group-hover:opacity-35 transition-all duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220]/55 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220]/95 via-[#0B1220]/30 to-transparent" />
 
               {/* Play button */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-[#C8A46A] flex items-center justify-center shadow-2xl shadow-[#C8A46A]/40 group-hover:scale-110 transition-transform duration-300">
-                  <Play size={20} fill="white" className="text-white ml-1" />
+                <div className="relative">
+                  {/* Pulse ring */}
+                  <div className="absolute inset-0 rounded-full bg-[#C8A46A]/20 animate-ping scale-125 opacity-60" />
+                  <div className="w-20 h-20 rounded-full bg-white/5 backdrop-blur-md border border-white/[0.12] flex items-center justify-center shadow-2xl transition-transform duration-500 group-hover:scale-110">
+                    <div className="w-13 h-13 w-[52px] h-[52px] rounded-full bg-[#C8A46A] flex items-center justify-center shadow-lg shadow-[#C8A46A]/40">
+                      <Play size={20} fill="#0B1220" className="text-[#0B1220] ml-1" />
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              {/* Caption */}
-              <div className="absolute bottom-6 left-6 right-6">
-                <p className="text-white/80 text-sm font-medium">Watch Our Story</p>
-                <p className="text-white/50 text-xs mt-0.5">2 min — Founder introduction</p>
+              {/* Bottom label */}
+              <div className="absolute bottom-8 left-8 right-8">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-bold text-white tracking-[0.2em] uppercase mb-4">
+                  <span className="w-2 h-2 rounded-full bg-[#C8A46A] animate-pulse" />
+                  Our Story
+                </div>
+                <h4 className="font-heading text-3xl md:text-4xl text-white">Watch How We Work</h4>
+                <p className="text-white/60 text-sm mt-2">A closer look at our firm and our people</p>
               </div>
-
-              {/* Gold corner accent */}
-              <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-[#C8A46A]" />
-              <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-[#C8A46A]" />
             </div>
           </AnimatedSection>
-
-          {/* Right — Text */}
-          <AnimatedSection delay={0.2} className="flex flex-col gap-8">
-            <div>
-              <div className="w-10 h-0.5 bg-[#C8A46A] mb-5" />
-              <h3 className="font-playfair text-2xl text-[#F5F1EA] mb-4">
-                Two Decades of Trusted Advisory
-              </h3>
-              <p className="text-[#A7B0C0] text-base leading-relaxed">
-                Founded with a commitment to clarity and integrity, Ginny &amp; Co. has grown from
-                a boutique practice into a full-service chartered accountancy firm serving businesses
-                across sectors. We combine deep technical expertise with strategic business acumen.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-3 gap-3 rounded-[var(--radius-2xl)] overflow-hidden">
-              {[
-                { title: 'Mission', text: 'To deliver precise, proactive financial guidance that empowers businesses to grow with confidence.' },
-                { title: 'Vision', text: 'To be the most trusted advisory partner for Indian businesses — from startup to scale.' },
-                { title: 'Values', text: 'Integrity, precision, client-centricity, and a commitment to long-term partnerships.' },
-              ].map((item) => (
-                <div key={item.title} className="bg-[#121B2A] rounded-[var(--radius-lg)] p-5 border border-white/7 hover:border-[#C8A46A]/20 transition-all duration-300">
-                  <div className="text-[#C8A46A] text-xs font-bold tracking-widest uppercase mb-2">{item.title}</div>
-                  <p className="text-[#AEB7C7] text-sm leading-relaxed">{item.text}</p>
-                </div>
-              ))}
-            </div>
-          </AnimatedSection>
-        </div>
-
-        {/* Stats Row */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
-          {stats.map((stat, i) => (
-            <AnimatedSection key={stat.label} delay={0.1 * i}>
-              <div className="bg-[#121B2A] rounded-[var(--radius-2xl)] p-8 text-center hover:border-[#C8A46A]/25 hover:shadow-[0_6px_28px_rgba(200,164,106,0.06)] hover:-translate-y-1 transition-all duration-300 cursor-default border border-white/7">
-                <stat.icon
-                  size={22}
-                  className="mx-auto mb-4 text-[#C8A46A] transition-colors"
-                />
-                <div className="font-playfair text-4xl font-semibold text-[#F5F1EA] transition-colors mb-1">
-                  {stat.num}
-                </div>
-                <div className="text-sm font-semibold text-[#F5F1EA] transition-colors mb-1">
-                  {stat.label}
-                </div>
-                <div className="text-xs text-[#A7B0C0] transition-colors">
-                  {stat.desc}
-                </div>
-              </div>
-            </AnimatedSection>
-          ))}
         </div>
       </div>
     </section>
   );
 }
-

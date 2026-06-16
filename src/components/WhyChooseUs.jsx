@@ -10,7 +10,7 @@ function AnimatedSection({ children, className = '', delay = 0 }) {
       ref={ref}
       initial={{ opacity: 0, y: 28 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: 'easeOut', delay }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay }}
       className={className}
     >
       {children}
@@ -53,7 +53,7 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-32 bg-[#172338] relative overflow-hidden">
+    <section className="py-24 lg:py-32 bg-[#070B14] relative overflow-hidden">
       {/* Ambient glow top-right */}
       <div className="absolute top-0 right-0 w-[400px] h-[350px] rounded-full bg-[#4a3a6e]/8 blur-[120px] pointer-events-none" />
       <div className="max-w-[1240px] mx-auto px-6">
@@ -64,10 +64,10 @@ export default function WhyChooseUs() {
             Our Difference
           </span>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <h2 className="font-playfair text-4xl lg:text-5xl text-[#F5F1EA] max-w-lg leading-tight">
+            <h2 className="font-heading text-4xl lg:text-5xl text-[#F5F1EA] max-w-lg leading-tight">
               Why Choose Ginny &amp; Co.
             </h2>
-            <p className="text-[#A7B0C0] text-base max-w-sm leading-relaxed">
+            <p className="text-[#A7B0C0]/90 text-base max-w-sm leading-relaxed">
               What sets us apart is not just what we do, but how we do it.
             </p>
           </div>
@@ -78,16 +78,16 @@ export default function WhyChooseUs() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((feature, i) => (
             <AnimatedSection key={feature.title} delay={0.07 * i}>
-              <div className="group bg-[#121B2A] rounded-[var(--radius-2xl)] p-8 hover:border-[#C8A46A]/20 hover:-translate-y-1 transition-all duration-300 cursor-default h-full border border-white/7">
+              <div className="group bg-[#121B2A] rounded-[var(--radius-2xl)] p-8 hover:border-[#C8A46A]/20 hover:-translate-y-1 transition-all duration-300 cursor-default h-full border border-white/[0.06]">
                 <div className="flex items-start gap-5">
                   <div className="w-11 h-11 shrink-0 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-[#C8A46A]/15 transition-colors duration-300">
-                    <feature.icon size={18} className="text-[#A7B0C0] group-hover:text-[#C8A46A] transition-colors duration-300" />
+                    <feature.icon size={18} className="text-[#A7B0C0]/90 group-hover:text-[#C8A46A] transition-colors duration-300" />
                   </div>
                   <div>
                     <h3 className="text-[#F5F1EA] font-semibold text-base mb-2 transition-colors duration-300">
                       {feature.title}
                     </h3>
-                    <p className="text-[#A7B0C0] text-sm leading-relaxed transition-colors duration-300">
+                    <p className="text-[#A7B0C0]/90 text-sm leading-relaxed transition-colors duration-300">
                       {feature.desc}
                     </p>
                   </div>

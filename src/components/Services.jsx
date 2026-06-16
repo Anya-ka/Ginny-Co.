@@ -13,7 +13,7 @@ function AnimatedSection({ children, className = '', delay = 0 }) {
       ref={ref}
       initial={{ opacity: 0, y: 28 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: 'easeOut', delay }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay }}
       className={className}
     >
       {children}
@@ -71,12 +71,12 @@ const serviceCategories = [
 function ServiceCard({ icon: Icon, name, desc, delay }) {
   return (
     <AnimatedSection delay={delay}>
-      <div className="group p-6 bg-[#0B1220] border border-white/7 rounded-2xl hover:border-[#C8A46A]/20 hover:shadow-[0_6px_32px_rgba(200,164,106,0.06)] hover:-translate-y-1 transition-all duration-300 cursor-default">
+      <div className="group p-6 bg-[#0B1220] border border-white/[0.06] rounded-2xl hover:border-[#C8A46A]/20 hover:shadow-[0_6px_32px_rgba(200,164,106,0.06)] hover:-translate-y-1 transition-all duration-300 cursor-default">
         <div className="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center mb-5 group-hover:bg-[#C8A46A]/10 transition-colors duration-300">
-          <Icon size={19} className="text-[#AEB7C7] group-hover:text-[#C8A46A] transition-colors duration-300" />
+          <Icon size={19} className="text-[#A7B0C0]/90 group-hover:text-[#C8A46A] transition-colors duration-300" />
         </div>
-        <h4 className="text-[#F4F1EA] font-semibold text-base mb-2">{name}</h4>
-        <p className="text-[#AEB7C7] text-sm leading-relaxed">{desc}</p>
+        <h4 className="text-[#F5F1EA] font-semibold text-base mb-2">{name}</h4>
+        <p className="text-[#A7B0C0]/90 text-sm leading-relaxed">{desc}</p>
       </div>
     </AnimatedSection>
   );
@@ -84,7 +84,7 @@ function ServiceCard({ icon: Icon, name, desc, delay }) {
 
 export default function Services() {
   return (
-    <section id="services" className="py-32 bg-[#121B2A] relative overflow-hidden">
+    <section id="services" className="py-24 lg:py-32 bg-[#121B2A] relative overflow-hidden">
       {/* Ambient glow left */}
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[#4a3a6e]/8 blur-[120px] pointer-events-none" />
       <div className="max-w-[1240px] mx-auto px-6 relative">
@@ -95,10 +95,10 @@ export default function Services() {
             What We Do
           </span>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <h2 className="font-playfair text-4xl lg:text-5xl text-[#F5F1EA] max-w-lg leading-tight">
+            <h2 className="font-heading text-4xl lg:text-5xl text-[#F5F1EA] max-w-lg leading-tight">
               Advisory Solutions
             </h2>
-            <p className="text-[#A7B0C0] text-base max-w-sm leading-relaxed">
+            <p className="text-[#A7B0C0]/90 text-base max-w-sm leading-relaxed">
               Comprehensive financial and compliance services built for modern businesses.
             </p>
           </div>
@@ -117,7 +117,7 @@ export default function Services() {
                   </div>
                   <div>
                     <h3 className="text-[#F5F1EA] font-bold text-lg tracking-wide">{category.label}</h3>
-                    <p className="text-[#A7B0C0] text-sm">{category.description}</p>
+                    <p className="text-[#A7B0C0]/90 text-sm">{category.description}</p>
                   </div>
                 </div>
               </AnimatedSection>

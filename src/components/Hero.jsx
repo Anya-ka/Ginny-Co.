@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { CalendarDays, ArrowRight } from 'lucide-react';
-import img from './img.png';
+import EditedImage from "../assets/EditedImage.png";
 
 export default function Hero() {
   const handleScroll = (id) => {
@@ -13,11 +13,13 @@ export default function Hero() {
     <section
       id="hero"
       className="relative w-full bg-[#0B1220] pt-24 pb-20 md:pb-28"
+      
     >
       {/* ROTHSCHILD-STYLE INSET VISUAL FRAME */}
       <div className="max-w-[1440px] mx-auto px-8 relative z-0">
         <div className="relative h-[65vh] md:h-[80vh] w-full overflow-hidden">
           <img
+            // src={EditedImage}
             src="https://gustavconcept.com/cdn/shop/articles/QIC_SYD_Unispace_QIC_resized_2_copy.jpg?v=1691409476"
             alt="Financial Consulting and Accounting"
             className="w-full h-full object-cover"
@@ -38,7 +40,7 @@ export default function Hero() {
           {/* Heading */}
           <h1
             className="font-bold text-[#0B1220] text-2xl md:text-[36px] lg:text-[40px] leading-[1.25] tracking-tight mb-5"
-            style={{ fontFamily: "'DM Sans', sans-serif" }}
+            
           >
             A young boutique CA firm helping businesses build, grow and succeed.
           </h1>

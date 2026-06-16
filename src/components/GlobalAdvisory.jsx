@@ -10,7 +10,7 @@ function AnimatedSection({ children, className = '', delay = 0 }) {
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, ease: 'easeOut', delay }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay }}
       className={className}
     >
       {children}
@@ -55,7 +55,7 @@ export default function GlobalAdvisory() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <section id="advisory" className="py-32 bg-[#0B1220] relative overflow-hidden">
+    <section id="advisory" className="py-24 lg:py-32 bg-[#0B1220] relative overflow-hidden">
       {/* Subtle dot pattern */}
       <div
         className="absolute inset-0 opacity-[0.025]"
@@ -75,23 +75,23 @@ export default function GlobalAdvisory() {
           <span className="text-[#C8A46A] text-xs font-semibold tracking-[0.2em] uppercase block mb-6">
             Strategic Services
           </span>
-          <h2 className="font-playfair text-5xl lg:text-7xl text-[#F5F1EA] leading-none tracking-tight mb-6">
+          <h2 className="font-heading text-5xl lg:text-7xl text-[#F5F1EA] leading-none tracking-tight mb-6">
             Global
             <br />
             <span className="text-[#C8A46A]">Advisory</span>
           </h2>
-          <p className="text-[#A7B0C0]/70 text-base max-w-md leading-relaxed">
+          <p className="text-[#A7B0C0]/90/70 text-base max-w-md leading-relaxed">
             Strategic advisory services designed to accelerate business growth and navigate
             complex financial landscapes.
           </p>
         </AnimatedSection>
 
         {/* Advisory list */}
-        <div className="border-t border-white/7">
+        <div className="border-t border-white/[0.06]">
           {advisoryItems.map((item, i) => (
             <AnimatedSection key={item.title} delay={0.06 * i}>
               <div
-                className="group border-b border-white/7 relative cursor-default"
+                className="group border-b border-white/[0.06] relative cursor-default"
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
@@ -103,7 +103,7 @@ export default function GlobalAdvisory() {
                   className="absolute inset-0 bg-white/[0.018] pointer-events-none"
                 />
 
-                <div className="flex items-center justify-between py-7 px-2 lg:px-4 gap-8">
+                <div className="flex items-center justify-between py-4 px-2 lg:px-4 gap-8">
                   {/* Left */}
                   <div className="flex items-center gap-6 min-w-0">
                     <span className="text-[#C8A46A]/35 text-xs font-mono tracking-widest shrink-0 hidden sm:block">
@@ -114,7 +114,7 @@ export default function GlobalAdvisory() {
                         color: hoveredIndex === i ? '#C8A46A' : '#F5F1EA',
                       }}
                       transition={{ duration: 0.2 }}
-                      className="font-playfair text-2xl lg:text-3xl xl:text-4xl font-semibold tracking-tight"
+                      className="font-heading text-2xl lg:text-3xl xl:text-4xl font-semibold tracking-tight"
                     >
                       {item.title}
                     </motion.h3>
@@ -129,7 +129,7 @@ export default function GlobalAdvisory() {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: 10 }}
                           transition={{ duration: 0.25 }}
-                          className="text-[#A7B0C0]/70 text-sm leading-relaxed max-w-sm text-right hidden lg:block"
+                          className="text-[#A7B0C0]/90/70 text-sm leading-relaxed max-w-sm text-right hidden lg:block"
                         >
                           {item.desc}
                         </motion.p>
@@ -158,7 +158,7 @@ export default function GlobalAdvisory() {
                       transition={{ duration: 0.25 }}
                       className="overflow-hidden lg:hidden"
                     >
-                      <p className="text-[#A7B0C0]/70 text-sm leading-relaxed px-2 pb-5">
+                      <p className="text-[#A7B0C0]/90/70 text-sm leading-relaxed px-2 pb-5">
                         {item.desc}
                       </p>
                     </motion.div>

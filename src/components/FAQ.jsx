@@ -10,7 +10,7 @@ function AnimatedSection({ children, className = '', delay = 0 }) {
       ref={ref}
       initial={{ opacity: 0, y: 24 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: 'easeOut', delay }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay }}
       className={className}
     >
       {children}
@@ -50,10 +50,10 @@ function FAQItem({ q, a, index }) {
 
   return (
     <AnimatedSection delay={0.06 * index}>
-      <div className={`border-b border-white/8 last:border-0`}>
+      <div className={`border-b border-white/[0.06] last:border-0`}>
         <button
           onClick={() => setOpen(!open)}
-          className="w-full flex items-center justify-between py-6 text-left group"
+          className="w-full flex items-center justify-between py-5 text-left group"
           aria-expanded={open}
         >
           <span className={`text-base font-medium pr-8 transition-colors duration-200 ${open ? 'text-[#C8A46A]' : 'text-[#F5F1EA] group-hover:text-[#C8A46A]'}`}>
@@ -62,7 +62,7 @@ function FAQItem({ q, a, index }) {
           <span className={`shrink-0 w-7 h-7 rounded-full border flex items-center justify-center transition-all duration-200 ${
             open
               ? 'border-[#C8A46A] bg-[#C8A46A] text-[#070B14] shadow-md shadow-[#C8A46A]/30'
-              : 'border-white/15 text-[#A7B0C0] group-hover:border-[#C8A46A] group-hover:text-[#C8A46A]'
+              : 'border-white/[0.06] text-[#A7B0C0]/90 group-hover:border-[#C8A46A] group-hover:text-[#C8A46A]'
           }`}>
             {open ? <Minus size={13} /> : <Plus size={13} />}
           </span>
@@ -74,10 +74,10 @@ function FAQItem({ q, a, index }) {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden"
             >
-              <p className="text-[#A7B0C0] text-sm leading-relaxed pb-6 pr-12">
+              <p className="text-[#A7B0C0]/90 text-sm leading-relaxed pb-6 pr-12">
                 {a}
               </p>
             </motion.div>
@@ -90,7 +90,7 @@ function FAQItem({ q, a, index }) {
 
 export default function FAQ() {
   return (
-    <section className="py-32 bg-[#121B2A]">
+    <section className="py-24 lg:py-32 bg-[#121B2A]">
       <div className="max-w-[1240px] mx-auto px-6">
         <div className="grid lg:grid-cols-[340px_1fr] gap-20">
           {/* Left */}
@@ -99,10 +99,10 @@ export default function FAQ() {
               <span className="w-6 h-px bg-[#C8A46A]" />
               FAQs
             </span>
-            <h2 className="font-playfair text-4xl lg:text-5xl text-[#F5F1EA] leading-tight mb-6">
+            <h2 className="font-heading text-4xl lg:text-5xl text-[#F5F1EA] leading-tight mb-6">
               Common Questions
             </h2>
-            <p className="text-[#A7B0C0] text-sm leading-relaxed mb-8">
+            <p className="text-[#A7B0C0]/90 text-sm leading-relaxed mb-8">
               Can't find your answer here? Reach out and we'll respond within one business day.
             </p>
             <a

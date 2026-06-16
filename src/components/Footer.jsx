@@ -48,15 +48,15 @@ export default function Footer() {
                 G
               </div>
               <div>
-                <div className="font-bold text-[#F4F1EA] text-base tracking-wide" style={{ fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: '0.02em' }}>
+                <div className="font-bold text-[#F5F1EA] text-base tracking-wide" className="font-heading" style={{ letterSpacing: '0.02em' }}>
                   Ginny <span className="text-[#C8A46A]">&amp;</span> Co.
                 </div>
-                <div className="text-[#AEB7C7]/40 text-[10px] tracking-[0.14em] uppercase">
+                <div className="text-[#A7B0C0]/90/40 text-[10px] tracking-[0.14em] uppercase">
                   Chartered Accountants
                 </div>
               </div>
             </a>
-            <p className="text-[#A7B0C0]/60 text-sm leading-relaxed mb-8">
+            <p className="text-[#A7B0C0]/90/60 text-sm leading-relaxed mb-8">
               Trusted chartered accountants and business advisors helping businesses
               navigate taxation, compliance, and growth across India.
             </p>
@@ -69,7 +69,7 @@ export default function Footer() {
                   aria-label={label}
                   className="w-9 h-9 rounded-sm bg-white/5 flex items-center justify-center hover:bg-[#C8A46A] transition-colors duration-200 group"
                 >
-                  <Icon size={15} className="text-white/60 group-hover:text-white transition-colors" />
+                  <Icon size={15} className="text-[#F5F1EA]/60 group-hover:text-[#F5F1EA] transition-colors" />
                 </a>
               ))}
             </div>
@@ -86,7 +86,7 @@ export default function Footer() {
                   <a
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="text-[#A7B0C0]/40 hover:text-[#C8A46A] text-sm transition-colors duration-200 flex items-center gap-1.5 group"
+                    className="text-[#A7B0C0]/90/40 hover:text-[#C8A46A] text-sm transition-colors duration-200 flex items-center gap-1.5 group"
                   >
                     <span className="w-0 group-hover:w-3 overflow-hidden transition-all duration-200 text-[#C8A46A]">→</span>
                     {link.label}
@@ -107,7 +107,7 @@ export default function Footer() {
                   <a
                     href="#services"
                     onClick={(e) => handleNavClick(e, '#services')}
-                    className="text-[#A7B0C0]/40 hover:text-[#C8A46A] text-sm transition-colors duration-200"
+                    className="text-[#A7B0C0]/90/40 hover:text-[#C8A46A] text-sm transition-colors duration-200"
                   >
                     {service}
                   </a>
@@ -125,7 +125,7 @@ export default function Footer() {
               <li>
                 <a href="tel:+919876543210" className="flex items-start gap-3 group">
                   <Phone size={14} className="text-[#C8A46A] mt-0.5 shrink-0" />
-                  <span className="text-[#A7B0C0]/40 group-hover:text-[#A7B0C0]/70 text-sm transition-colors">
+                  <span className="text-[#A7B0C0]/90/40 group-hover:text-[#A7B0C0]/90/70 text-sm transition-colors">
                     +91 98765 43210
                   </span>
                 </a>
@@ -133,23 +133,23 @@ export default function Footer() {
               <li>
                 <a href="mailto:hello@ginnyandco.in" className="flex items-start gap-3 group">
                   <Mail size={14} className="text-[#C8A46A] mt-0.5 shrink-0" />
-                  <span className="text-[#A7B0C0]/40 group-hover:text-[#A7B0C0]/70 text-sm transition-colors">
+                  <span className="text-[#A7B0C0]/90/40 group-hover:text-[#A7B0C0]/90/70 text-sm transition-colors">
                     hello@ginnyandco.in
                   </span>
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={14} className="text-[#C8A46A] mt-0.5 shrink-0" />
-                <span className="text-[#A7B0C0]/40 text-sm leading-relaxed">
+                <span className="text-[#A7B0C0]/90/40 text-sm leading-relaxed">
                   12, Finance Park, Sector 18<br />
                   Noida, UP – 201301
                 </span>
               </li>
             </ul>
 
-            <div className="mt-8 pt-6 border-t border-white/8">
-              <p className="text-white/20 text-xs mb-3">ICAI Membership No.</p>
-              <p className="text-white/20 text-sm font-mono">123456</p>
+            <div className="mt-8 pt-6 border-t border-white/[0.06]">
+              <p className="text-[#F5F1EA]/20 text-xs mb-3">ICAI Membership No.</p>
+              <p className="text-[#F5F1EA]/20 text-sm font-mono">123456</p>
             </div>
           </div>
         </div>
@@ -160,12 +160,12 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="max-w-[1240px] mx-auto px-6 py-6">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-white/20 text-xs">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[#F5F1EA]/20 text-xs">
           <p>© {new Date().getFullYear()} Ginny &amp; Co. Chartered Accountants. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-white/50 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white/50 transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white/50 transition-colors">Disclaimer</a>
+            <a href="#" className="hover:text-[#F5F1EA]/50 transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-[#F5F1EA]/50 transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-[#F5F1EA]/50 transition-colors">Disclaimer</a>
           </div>
         </div>
       </div>
