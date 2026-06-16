@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, Circle, MessageSquare } from 'lucide-react';
 
 function AnimatedSection({ children, className = '', delay = 0 }) {
   const ref = useRef(null);
@@ -49,20 +49,20 @@ function FAQItem({ q, a, index }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <AnimatedSection delay={0.06 * index}>
-      <div className={`border-b border-white/[0.06] last:border-0`}>
+    <AnimatedSection delay={0.05 * index}>
+      <div className={`border border-white/[0.06] rounded-2xl overflow-hidden transition-all duration-300 ${open ? 'border-[#C8A46A]/30 shadow-[0_4px_24px_rgba(200,164,106,0.07)]' : 'hover:border-white/[0.12]'}`}>
         <button
           onClick={() => setOpen(!open)}
-          className="w-full flex items-center justify-between py-5 text-left group"
+          className="w-full flex items-center justify-between px-7 py-6 text-left group"
           aria-expanded={open}
         >
-          <span className={`text-base font-medium pr-8 transition-colors duration-200 ${open ? 'text-[#C8A46A]' : 'text-[#F5F1EA] group-hover:text-[#C8A46A]'}`}>
+          <span className={`text-base font-medium pr-8 transition-colors duration-200 leading-snug ${open ? 'text-[#C8A46A]' : 'text-[#F5F1EA] group-hover:text-[#C8A46A]'}`}>
             {q}
           </span>
-          <span className={`shrink-0 w-7 h-7 rounded-full border flex items-center justify-center transition-all duration-200 ${
+          <span className={`shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-200 ${
             open
-              ? 'border-[#C8A46A] bg-[#C8A46A] text-[#070B14] shadow-md shadow-[#C8A46A]/30'
-              : 'border-white/[0.06] text-[#A7B0C0]/90 group-hover:border-[#C8A46A] group-hover:text-[#C8A46A]'
+              ? 'border-[#C8A46A] bg-[#C8A46A] text-[#070B14]'
+              : 'border-white/[0.1] text-[#A7B0C0] group-hover:border-[#C8A46A]/50 group-hover:text-[#C8A46A]'
           }`}>
             {open ? <Minus size={13} /> : <Plus size={13} />}
           </span>
@@ -77,7 +77,7 @@ function FAQItem({ q, a, index }) {
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden"
             >
-              <p className="text-[#A7B0C0]/90 text-sm leading-relaxed pb-6 pr-12">
+              <p className="text-[#A7B0C0] text-sm leading-relaxed px-7 pb-7 pr-16">
                 {a}
               </p>
             </motion.div>
@@ -90,35 +90,44 @@ function FAQItem({ q, a, index }) {
 
 export default function FAQ() {
   return (
-    <section className="py-24 lg:py-32 bg-[#121B2A]">
-      <div className="max-w-[1240px] mx-auto px-6">
-        <div className="grid lg:grid-cols-[340px_1fr] gap-20">
-          {/* Left */}
-          <AnimatedSection>
-            <span className="inline-flex items-center gap-2 text-[#C8A46A] text-xs font-semibold tracking-[0.18em] uppercase mb-4">
-              <span className="w-6 h-px bg-[#C8A46A]" />
-              FAQs
-            </span>
-            <h2 className="font-heading text-4xl lg:text-5xl text-[#F5F1EA] leading-tight mb-6">
+    <section className="py-24 lg:py-32 bg-[#0B1220] relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#C8A46A]/4 rounded-full blur-[160px] pointer-events-none" />
+
+      <div className="max-w-[1240px] mx-auto px-6 relative">
+        <div className="grid lg:grid-cols-[380px_1fr] gap-16 lg:gap-24">
+
+          {/* Left sticky panel */}
+          <AnimatedSection className="lg:sticky lg:top-28 self-start">
+            <div className="flex items-center gap-3 mb-6">
+              <Circle size={9} className="text-[#C8A46A]" strokeWidth={3} />
+              <span className="text-[#C8A46A] text-[11px] font-bold tracking-[0.2em] uppercase">FAQs</span>
+            </div>
+            <h2 className="font-heading text-5xl lg:text-6xl text-[#F5F1EA] leading-tight mb-6">
               Common Questions
             </h2>
-            <p className="text-[#A7B0C0]/90 text-sm leading-relaxed mb-8">
+            <p className="text-[#A7B0C0] text-base leading-relaxed mb-10">
               Can't find your answer here? Reach out and we'll respond within one business day.
             </p>
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="inline-flex items-center gap-2 text-[#C8A46A] text-sm font-semibold border-b border-[#C8A46A]/30 pb-0.5 hover:border-[#C8A46A] transition-colors"
-            >
-              Ask a question →
-            </a>
+
+            {/* Contact prompt card */}
+            <div className="bg-[#121B2A] border border-white/[0.07] rounded-2xl p-6">
+              <div className="w-10 h-10 rounded-xl bg-[#C8A46A]/10 border border-[#C8A46A]/20 flex items-center justify-center mb-4">
+                <MessageSquare size={16} className="text-[#C8A46A]" />
+              </div>
+              <h4 className="font-heading text-xl text-[#F5F1EA] mb-2">Still have questions?</h4>
+              <p className="text-[#A7B0C0] text-sm leading-relaxed mb-5">Our team is happy to walk you through anything specific to your situation.</p>
+              <a
+                href="#contact"
+                onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A46A] text-[#0B1220] font-bold rounded-full text-sm hover:bg-[#d9b87a] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(200,164,106,0.25)]"
+              >
+                Ask a Question
+              </a>
+            </div>
           </AnimatedSection>
 
-          {/* Right */}
-          <div className="divide-y divide-white/8">
+          {/* Right — FAQ accordions */}
+          <div className="flex flex-col gap-3">
             {faqs.map((faq, i) => (
               <FAQItem key={i} q={faq.q} a={faq.a} index={i} />
             ))}
