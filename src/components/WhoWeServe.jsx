@@ -97,7 +97,7 @@ export default function WhoWeServe() {
           </div>
         </AnimatedSection>
 
-        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] items-center">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] items-start">
           <AnimatedSection>
             <div className="relative overflow-hidden rounded-[40px] bg-[#0B1220] shadow-[0_40px_100px_rgba(0,0,0,0.15)]">
               <div className="relative h-[420px] lg:h-[500px] overflow-hidden">
