@@ -32,7 +32,7 @@ const clients = [
     title: 'SMEs',
     desc: 'We help small and medium enterprises streamline compliance, manage taxes, and build the financial systems they need to scale.',
     tag: 'Growth Stage',
-    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&q=80',
+    image: 'https://img.magnific.com/free-photo/medium-shot-people-working-together_23-2150628001.jpg?semt=ais_hybrid&w=740&q=80',
     stats: ['Tax Optimization', 'Compliance Automation', 'Financial Systems'],
   },
   {
