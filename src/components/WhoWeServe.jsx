@@ -97,50 +97,10 @@ export default function WhoWeServe() {
           </div>
         </AnimatedSection>
 
-        <div className="grid gap-8 lg:grid-cols-[1fr_1.3fr_1fr] items-center">
-          <AnimatedSection>
-            <div className="space-y-5">
-              {clients.slice(0, 3).map((client, index) => (
-                <motion.button
-                  key={client.title}
-                  type="button"
-                  onClick={() => setActiveIndex(index)}
-                  className={`group relative w-full overflow-hidden rounded-3xl border p-6 text-left transition-all duration-300 ${
-                    activeIndex === index
-                      ? 'border-[#C8A46A] bg-[#C8A46A]/8 shadow-[0_20px_50px_rgba(200,164,106,0.15)]'
-                      : 'border-[#E5E7EB] bg-white hover:border-[#C8A46A]/40 hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)]'
-                  }`}
-                >
-                  <div className="flex items-center gap-5">
-                    <div className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border transition-all duration-300 ${
-                      activeIndex === index
-                        ? 'border-[#C8A46A] bg-[#C8A46A]/20'
-                        : 'border-[#E5E7EB] bg-[#F9F7F2] group-hover:border-[#C8A46A]/40'
-                    }`}>
-                      <client.icon size={26} className={activeIndex === index ? 'text-[#C8A46A]' : 'text-[#64748B] group-hover:text-[#C8A46A]'} />
-                    </div>
-                    
-                    <div className="flex-1 min-w-0">
-                      <h3 className={`font-heading text-xl leading-tight ${
-                        activeIndex === index ? 'text-[#111827]' : 'text-[#475569] group-hover:text-[#111827]'
-                      }`}>
-                        {client.title}
-                      </h3>
-                      <span className={`text-[11px] font-bold uppercase tracking-[0.18em] ${
-                        activeIndex === index ? 'text-[#C8A46A]' : 'text-[#9CA3AF] group-hover:text-[#C8A46A]'
-                      }`}>
-                        {client.tag}
-                      </span>
-                    </div>
-                  </div>
-                </motion.button>
-              ))}
-            </div>
-          </AnimatedSection>
-
+        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] items-center">
           <AnimatedSection>
             <div className="relative overflow-hidden rounded-[40px] bg-[#0B1220] shadow-[0_40px_100px_rgba(0,0,0,0.15)]">
-              <div className="relative h-[380px] lg:h-[450px] overflow-hidden">
+              <div className="relative h-[420px] lg:h-[500px] overflow-hidden">
                 <img
                   src={activeClient.image}
                   alt={activeClient.title}
@@ -179,35 +139,35 @@ export default function WhoWeServe() {
           </AnimatedSection>
 
           <AnimatedSection>
-            <div className="space-y-5">
-              {clients.slice(3, 6).map((client, index) => (
+            <div className="space-y-4">
+              {clients.map((client, index) => (
                 <motion.button
                   key={client.title}
                   type="button"
-                  onClick={() => setActiveIndex(index + 3)}
+                  onClick={() => setActiveIndex(index)}
                   className={`group relative w-full overflow-hidden rounded-3xl border p-6 text-left transition-all duration-300 ${
-                    activeIndex === index + 3
+                    activeIndex === index
                       ? 'border-[#C8A46A] bg-[#C8A46A]/8 shadow-[0_20px_50px_rgba(200,164,106,0.15)]'
                       : 'border-[#E5E7EB] bg-white hover:border-[#C8A46A]/40 hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)]'
                   }`}
                 >
                   <div className="flex items-center gap-5">
                     <div className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border transition-all duration-300 ${
-                      activeIndex === index + 3
+                      activeIndex === index
                         ? 'border-[#C8A46A] bg-[#C8A46A]/20'
                         : 'border-[#E5E7EB] bg-[#F9F7F2] group-hover:border-[#C8A46A]/40'
                     }`}>
-                      <client.icon size={26} className={activeIndex === index + 3 ? 'text-[#C8A46A]' : 'text-[#64748B] group-hover:text-[#C8A46A]'} />
+                      <client.icon size={26} className={activeIndex === index ? 'text-[#C8A46A]' : 'text-[#64748B] group-hover:text-[#C8A46A]'} />
                     </div>
                     
                     <div className="flex-1 min-w-0">
                       <h3 className={`font-heading text-xl leading-tight ${
-                        activeIndex === index + 3 ? 'text-[#111827]' : 'text-[#475569] group-hover:text-[#111827]'
+                        activeIndex === index ? 'text-[#111827]' : 'text-[#475569] group-hover:text-[#111827]'
                       }`}>
                         {client.title}
                       </h3>
                       <span className={`text-[11px] font-bold uppercase tracking-[0.18em] ${
-                        activeIndex === index + 3 ? 'text-[#C8A46A]' : 'text-[#9CA3AF] group-hover:text-[#C8A46A]'
+                        activeIndex === index ? 'text-[#C8A46A]' : 'text-[#9CA3AF] group-hover:text-[#C8A46A]'
                       }`}>
                         {client.tag}
                       </span>
